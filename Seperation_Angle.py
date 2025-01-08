@@ -112,7 +112,6 @@ def display_form():
             st.warning("Summary file not found or not yet generated.")
 
 
-
 def display_pdfs():
     if st.session_state["output_folder"] and st.session_state["generated_files"]:
         st.subheader("View and Download Generated Files:")
