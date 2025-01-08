@@ -22,15 +22,12 @@ SRCLIST_FILE = os.path.join(BASE_DIR, "Srclist.txt")
 OBSRV_COORD_FILE = os.path.join(BASE_DIR, "ObservatoryCoord.txt")
 
 def display_header():
-    # Encode the logo image to Base64
     with open("InPTA_logo-removebg.png", "rb") as logo_file:
         encoded_logo = base64.b64encode(logo_file.read()).decode()
 
-    # Encode the header image to Base64
     with open("gmrtarray_panorama1.jpg", "rb") as header_file:
         encoded_header = base64.b64encode(header_file.read()).decode()
 
-    # HTML with Base64-encoded images
     header_html = f"""
     <div style="width: 100%; height: auto;">
         <a href="https://inpta.iitr.ac.in/" target="_blank">
@@ -46,44 +43,28 @@ def display_header():
 def display_form():
     st.title("Observatory Data Input")
 
-    # Text area for pasting Srclist data
     srclist_data = st.text_area("Paste Srclist Data Here", placeholder="Paste the contents of Srclist.txt")
 
-    # Save the pasted data to a file
     if srclist_data.strip():
         with open(SRCLIST_FILE, "w") as file:
             file.write(srclist_data)
 
-    # Observation date input
     observation_date = st.date_input("Observation Date (DD-MM-YYYY)")
-
-    # Observation start time input
     observation_start_time = st.text_input("Observation Start Time (HH:MM:SS)", placeholder="HH:MM:SS")
-
-    # Combine date and time into a single string
     start_time_ist = f"{observation_date} {observation_start_time}"
-
-    # Observation duration input
     observation_duration = st.number_input("Observation Duration (in hours)", min_value=0.0, step=0.1)
-
-    # Threshold separation angle input
     threshold_angle = st.number_input("Threshold Separation Angle (degrees)", min_value=0.0, step=0.1)
-
-    # Observatory name dropdown
     observatory_name = st.selectbox("Select Observatory", ["GMRT", "VLA"])
 
-    # Create or clear the summary file
     summary_file = create_or_clear_directory(OUTPUT_DIR)
     with open(summary_file, "a") as file:
         file.write(f"Observatory Name: {observatory_name}\n")
         file.write(f"Start Time: {start_time_ist}\n")
         file.write(f"Observation Duration: {observation_duration}\n")
 
-    # Submit button
     if st.button("Submit"):
         if srclist_data.strip() and observatory_name:
             with st.spinner("Processing..."):
-                # Call the backend code to generate plots and save outputs
                 main(
                     OBSRV_COORD_FILE,
                     OUTPUT_DIR,
@@ -96,37 +77,34 @@ def display_form():
                 )
             st.success("Processing complete. Please find the output below.")
 
-            # Display the summary file
             with open(summary_file, "r") as file:
                 summary_contents = file.read()
             st.subheader("Summary File Contents:")
             st.code(summary_contents, language="text")
 
-            # Save the output folder path to session state
-            st.session_state["output_folder"] = OUTPUT_DIR
+            st.session_state["output_folder"] = OUTPUT_DIR  # Ensure output folder persists
 
 def display_pdfs():
-    # Display output PDFs
-    if "output_folder" in st.session_state:
-        output_folder = st.session_state["output_folder"]
-        st.subheader("View Generated PDFs:")
+    if "output_folder" not in st.session_state:
+        return
 
-        for filename in os.listdir(output_folder):
-            if filename.endswith(".pdf"):
-                file_path = os.path.join(output_folder, filename)
-                with open(file_path, "rb") as pdf_file:
-                    pdf_data = pdf_file.read()
+    output_folder = st.session_state["output_folder"]
+    st.subheader("View Generated PDFs:")
 
-                # Use Streamlit's download button
-                st.download_button(
-                    label=f"Download {filename}",
-                    data=pdf_data,
-                    file_name=filename,
-                    mime="application/pdf",
-                )
+    for filename in os.listdir(output_folder):
+        if filename.endswith(".pdf"):
+            file_path = os.path.join(output_folder, filename)
+            with open(file_path, "rb") as pdf_file:
+                pdf_data = pdf_file.read()
+
+            st.download_button(
+                label=f"Download {filename}",
+                data=pdf_data,
+                file_name=filename,
+                mime="application/pdf",
+            )
 
 def display_footer():
-    # Encode the small image (footer logo)
     with open("download.jpeg", "rb") as footer_file:
         encoded_footer = base64.b64encode(footer_file.read()).decode()
 
