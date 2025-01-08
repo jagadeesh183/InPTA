@@ -60,15 +60,15 @@ def display_form():
     observation_duration = st.number_input("Observation Duration (in hours)", min_value=0.0, step=0.1)
     threshold_angle = st.number_input("Threshold Separation Angle (degrees)", min_value=0.0, step=0.1)
     observatory_name = st.selectbox("Select Observatory", ["GMRT", "VLA"])
+    
+    
 
     if st.button("Submit"):
         if srclist_data.strip() and observatory_name:
             with st.spinner("Processing..."):
                 create_or_clear_directory(OUTPUT_DIR)
                 summary_file = os.path.join(OUTPUT_DIR, "summary.txt")
-
-                # Write to summary.txt
-                with open(summary_file, "w") as file:
+                with open(summary_file, 'a') as file:
                     file.write(f"Observatory Name: {observatory_name} \n")
                     file.write(f"Start Time: {start_time_ist} \n")
                     file.write(f"Observation Duration: {observation_duration} \n")
@@ -83,33 +83,25 @@ def display_form():
                     threshold_angle,
                     observatory_name,
                 )
-
-                # Store summary.txt content in session state
                 with open(summary_file, "r") as file:
                     st.session_state["summary_contents"] = file.read()
 
-                # Update session state for generated files
+                # Update session state
                 st.session_state["output_folder"] = OUTPUT_DIR
                 st.session_state["generated_files"] = [
                     f for f in os.listdir(OUTPUT_DIR) if os.path.isfile(os.path.join(OUTPUT_DIR, f))
                 ]
 
             st.success("Processing complete. Files are ready for download below.")
-
-    # Display the summary contents from session state
-    if "summary_contents" in st.session_state and st.session_state["summary_contents"]:
-        st.subheader("Summary File Contents:")
-        st.code(st.session_state["summary_contents"], language="text")
-    else:
-        # Try loading the contents again if available
-        summary_file = os.path.join(OUTPUT_DIR, "summary.txt")
-        if os.path.exists(summary_file):
-            with open(summary_file, "r") as file:
-                st.session_state["summary_contents"] = file.read()
-            st.subheader("Summary File Contents:")
-            st.code(st.session_state["summary_contents"], language="text")
-        else:
-            st.warning("Summary file not found or not yet generated.")
+            
+            # Check and display summary file
+            if os.path.exists(summary_file):
+                with open(summary_file, 'r') as file:
+                    summary_contents = file.read()
+                st.subheader("Summary File Contents:")
+                st.code(summary_contents, language="text")
+            else:
+                st.warning("Summary file not found!")
 
 
 def display_pdfs():
