@@ -99,15 +99,12 @@ def display_form():
             st.success("Processing complete. Files are ready for download below.")
 
             # Display summary file contents
-            if os.path.exists(summary_file):
-                summary_contents = st.session_state.get("summary_contents", "")
-                if summary_contents:
-                    st.subheader("Summary File Contents:")
-                    st.code(summary_contents, language="text")
-                else:
-                    st.warning("Summary file contents could not be loaded!")
+            summary_contents = st.session_state.get("summary_contents", "")
+            if summary_contents:
+                st.subheader("Summary File Contents:")
+                st.code(summary_contents, language="text")
             else:
-                st.warning("Summary file not found!")
+                st.warning("Summary file contents could not be loaded!")
 
 
 
@@ -116,7 +113,7 @@ def display_pdfs():
         st.subheader("View and Download Generated Files:")
         for filename in st.session_state["generated_files"]:
             file_path = os.path.join(st.session_state["output_folder"], filename)
-            
+
             # Handle summary.txt separately to ensure it's not affected by other downloads
             if filename == "summary.txt":
                 with open(file_path, "rb") as file:
@@ -140,6 +137,7 @@ def display_pdfs():
                     file_name=filename,
                     mime="application/octet-stream",
                 )
+
 
    # else:
         #st.info("No files available for download. Please submit the form to generate files.")
