@@ -107,7 +107,7 @@ def display_form():
             with open(summary_file, "r") as file:
                 summary_contents = file.read()
             st.subheader("Summary File Contents:")
-            st.text(summary_contents)
+            st.code(summary_contents, language="text")
 
             # Save the output folder path to session state
             st.session_state["output_folder"] = OUTPUT_DIR
