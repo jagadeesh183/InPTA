@@ -116,15 +116,30 @@ def display_pdfs():
         st.subheader("View and Download Generated Files:")
         for filename in st.session_state["generated_files"]:
             file_path = os.path.join(st.session_state["output_folder"], filename)
-            with open(file_path, "rb") as file:
-                file_data = file.read()
+            
+            # Handle summary.txt separately to ensure it's not affected by other downloads
+            if filename == "summary.txt":
+                with open(file_path, "rb") as file:
+                    file_data = file.read()
 
-            st.download_button(
-                label=f"Download {filename}",
-                data=file_data,
-                file_name=filename,
-                mime="application/octet-stream",
-            )
+                # Provide download button for summary.txt
+                st.download_button(
+                    label=f"Download {filename}",
+                    data=file_data,
+                    file_name=filename,
+                    mime="application/octet-stream",
+                )
+            else:
+                with open(file_path, "rb") as file:
+                    file_data = file.read()
+
+                # Provide download button for other files
+                st.download_button(
+                    label=f"Download {filename}",
+                    data=file_data,
+                    file_name=filename,
+                    mime="application/octet-stream",
+                )
 
    # else:
         #st.info("No files available for download. Please submit the form to generate files.")
