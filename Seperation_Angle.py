@@ -83,6 +83,8 @@ def display_form():
                     threshold_angle,
                     observatory_name,
                 )
+                with open(summary_file, "r") as file:
+                    st.session_state["summary_contents"] = file.read()
 
                 # Update session state
                 st.session_state["output_folder"] = OUTPUT_DIR
