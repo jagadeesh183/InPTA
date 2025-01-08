@@ -64,44 +64,43 @@ def display_form():
     
 
     if st.button("Submit"):
-        if srclist_data.strip() and observatory_name:
-            with st.spinner("Processing..."):
-                create_or_clear_directory(OUTPUT_DIR)
-                summary_file = os.path.join(OUTPUT_DIR, "summary.txt")
-                with open(summary_file, 'a') as file:
-                    file.write(f"Observatory Name: {observatory_name} \n")
-                    file.write(f"Start Time: {start_time_ist} \n")
-                    file.write(f"Observation Duration: {observation_duration} \n")
+    if srclist_data.strip() and observatory_name:
+        with st.spinner("Processing..."):
+            create_or_clear_directory(OUTPUT_DIR)
+            summary_file = os.path.join(OUTPUT_DIR, "summary.txt")
+            with open(summary_file, 'a') as file:
+                file.write(f"Observatory Name: {observatory_name} \n")
+                file.write(f"Start Time: {start_time_ist} \n")
+                file.write(f"Observation Duration: {observation_duration} \n")
 
-                main(
-                    OBSRV_COORD_FILE,
-                    OUTPUT_DIR,
-                    summary_file,
-                    SRCLIST_FILE,
-                    start_time_ist,
-                    observation_duration,
-                    threshold_angle,
-                    observatory_name,
-                )
-                with open(summary_file, "r") as file:
-                    st.session_state["summary_contents"] = file.read()
+            main(
+                OBSRV_COORD_FILE,
+                OUTPUT_DIR,
+                summary_file,
+                SRCLIST_FILE,
+                start_time_ist,
+                observation_duration,
+                threshold_angle,
+                observatory_name,
+            )
 
-                # Update session state
-                st.session_state["output_folder"] = OUTPUT_DIR
-                st.session_state["generated_files"] = [
-                    f for f in os.listdir(OUTPUT_DIR) if os.path.isfile(os.path.join(OUTPUT_DIR, f))
-                ]
+            # Update session state for summary contents and generated files
+            with open(summary_file, "r") as file:
+                st.session_state["summary_contents"] = file.read()
 
-            st.success("Processing complete. Files are ready for download below.")
-            
-            # Check and display summary file
-            if os.path.exists(summary_file):
-                with open(summary_file, 'r') as file:
-                    summary_contents = file.read()
-                st.subheader("Summary File Contents:")
-                st.code(summary_contents, language="text")
-            else:
-                st.warning("Summary file not found!")
+            st.session_state["output_folder"] = OUTPUT_DIR
+            st.session_state["generated_files"] = [
+                f for f in os.listdir(OUTPUT_DIR) if os.path.isfile(os.path.join(OUTPUT_DIR, f))
+            ]
+
+        st.success("Processing complete. Files are ready for download below.")
+
+if "summary_contents" in st.session_state:
+    st.subheader("Summary File Contents:")
+    st.code(st.session_state["summary_contents"], language="text")
+else:
+    st.warning("No summary file available. Please submit the form.")
+
 
 
 def display_pdfs():
