@@ -14,15 +14,12 @@ st.set_page_config(
     layout="wide"
 )
 
-
 # Paths
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_DIR = os.path.join(BASE_DIR, "static")
 OUTPUT_DIR = os.path.join(BASE_DIR, "output_final")
 SRCLIST_FILE = os.path.join(BASE_DIR, "Srclist.txt")
 OBSRV_COORD_FILE = os.path.join(BASE_DIR, "ObservatoryCoord.txt")
-
-
 
 def display_header():
     # Encode the logo image to Base64
@@ -36,19 +33,15 @@ def display_header():
     # HTML with Base64-encoded images
     header_html = f"""
     <div style="width: 100%; height: auto;">
-        <!-- Logo on top left, clickable to homepage -->
         <a href="https://inpta.iitr.ac.in/" target="_blank">
             <img src="data:image/png;base64,{encoded_logo}" alt="InPTA Logo" style="width: 100px; height: auto; position: absolute; top: 20px; left: 20px; z-index: 100;">
         </a>
-        <!-- Header Image with full width -->
-        <div style="margin-top: 80px;"> <!-- Adjusting this margin to give space below the logo -->
+        <div style="margin-top: 80px;">
             <img src="data:image/jpeg;base64,{encoded_header}" alt="Header Image" style="width: 100%; height: auto;">
         </div>
     </div>
     """
-    # Render the HTML in Streamlit
     st.markdown(header_html, unsafe_allow_html=True)
-
 
 def display_form():
     st.title("Observatory Data Input")
@@ -57,7 +50,7 @@ def display_form():
     srclist_data = st.text_area("Paste Srclist Data Here", placeholder="Paste the contents of Srclist.txt")
 
     # Save the pasted data to a file
-    if srclist_data.strip():  # Only proceed if the user has entered text
+    if srclist_data.strip():
         with open(SRCLIST_FILE, "w") as file:
             file.write(srclist_data)
 
@@ -112,20 +105,25 @@ def display_form():
             # Save the output folder path to session state
             st.session_state["output_folder"] = OUTPUT_DIR
 
-
 def display_pdfs():
     # Display output PDFs
     if "output_folder" in st.session_state:
         output_folder = st.session_state["output_folder"]
         st.subheader("View Generated PDFs:")
+
         for filename in os.listdir(output_folder):
             if filename.endswith(".pdf"):
                 file_path = os.path.join(output_folder, filename)
                 with open(file_path, "rb") as pdf_file:
-                    pdf_base64 = base64.b64encode(pdf_file.read()).decode("utf-8")
-                file_url = f"data:application/pdf;base64,{pdf_base64}"
-                st.markdown(f'<a href="{file_url}" target="_blank">{filename}</a>', unsafe_allow_html=True)
+                    pdf_data = pdf_file.read()
 
+                # Use Streamlit's download button
+                st.download_button(
+                    label=f"Download {filename}",
+                    data=pdf_data,
+                    file_name=filename,
+                    mime="application/pdf",
+                )
 
 def display_footer():
     # Encode the small image (footer logo)
@@ -135,7 +133,6 @@ def display_footer():
     footer_html = f"""
     <div style="background-color: #f0f0f0; color: black; padding: 20px; font-family: Arial, sans-serif; bottom: 0; left: 0; width: 100%; z-index: 1000;">
         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 100%;">
-            <!-- Left Section -->
             <div style="display: flex; align-items: center;">
                 <img src="data:image/jpeg;base64,{encoded_footer}" alt="Footer Logo" style="width: 50px; height: auto; margin-right: 15px;">
                 <div>
@@ -151,7 +148,6 @@ def display_footer():
                 </div>
             </div>
         </div>
-        <!-- Credits Section -->
         <div style="text-align: center; font-size: 12px; margin-top: 10px;">
             <p style="margin: 0;">Developed by <strong>S Jagadeesh</strong> & <strong>Shaswata Chowdhury</strong></p>
             <a href="mailto:shaswataphyres@gmail.com" style="color: blue; text-decoration: none; font-size: 12px;">Contact Us</a>
@@ -159,7 +155,6 @@ def display_footer():
     </div>
     """
     st.markdown(footer_html, unsafe_allow_html=True)
-
 
 # Main App
 if __name__ == "__main__":
