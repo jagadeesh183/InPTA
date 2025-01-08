@@ -60,21 +60,19 @@ def display_form():
     observation_duration = st.number_input("Observation Duration (in hours)", min_value=0.0, step=0.1)
     threshold_angle = st.number_input("Threshold Separation Angle (degrees)", min_value=0.0, step=0.1)
     observatory_name = st.selectbox("Select Observatory", ["GMRT", "VLA"])
+    
+    
 
     if st.button("Submit"):
         if srclist_data.strip() and observatory_name:
             with st.spinner("Processing..."):
-                # Create or clear the output directory
                 create_or_clear_directory(OUTPUT_DIR)
                 summary_file = os.path.join(OUTPUT_DIR, "summary.txt")
-                
-                # Write the initial details to summary.txt only once
-                with open(summary_file, 'w') as file:
+                with open(summary_file, 'a') as file:
                     file.write(f"Observatory Name: {observatory_name} \n")
                     file.write(f"Start Time: {start_time_ist} \n")
                     file.write(f"Observation Duration: {observation_duration} \n")
 
-                # Now call the main function
                 main(
                     OBSRV_COORD_FILE,
                     OUTPUT_DIR,
@@ -85,27 +83,25 @@ def display_form():
                     threshold_angle,
                     observatory_name,
                 )
+                with open(summary_file, "r") as file:
+                    st.session_state["summary_contents"] = file.read()
 
-                # Update session state with generated files
+                # Update session state
                 st.session_state["output_folder"] = OUTPUT_DIR
                 st.session_state["generated_files"] = [
                     f for f in os.listdir(OUTPUT_DIR) if os.path.isfile(os.path.join(OUTPUT_DIR, f))
                 ]
-                
-                # Read and store the summary file contents to display in the app
-                with open(summary_file, "r") as file:
-                    st.session_state["summary_contents"] = file.read()
 
             st.success("Processing complete. Files are ready for download below.")
-
-            # Display summary file contents
-            summary_contents = st.session_state.get("summary_contents", "")
-            if summary_contents:
+            
+            # Check and display summary file
+            if os.path.exists(summary_file):
+                with open(summary_file, 'r') as file:
+                    summary_contents = file.read()
                 st.subheader("Summary File Contents:")
                 st.code(summary_contents, language="text")
             else:
-                st.warning("Summary file contents could not be loaded!")
-
+                st.warning("Summary file not found!")
 
 
 def display_pdfs():
@@ -113,32 +109,15 @@ def display_pdfs():
         st.subheader("View and Download Generated Files:")
         for filename in st.session_state["generated_files"]:
             file_path = os.path.join(st.session_state["output_folder"], filename)
+            with open(file_path, "rb") as file:
+                file_data = file.read()
 
-            # Handle summary.txt separately to ensure it's not affected by other downloads
-            if filename == "summary.txt":
-                with open(file_path, "rb") as file:
-                    file_data = file.read()
-
-                # Provide download button for summary.txt
-                st.download_button(
-                    label=f"Download {filename}",
-                    data=file_data,
-                    file_name=filename,
-                    mime="application/octet-stream",
-                )
-            else:
-                with open(file_path, "rb") as file:
-                    file_data = file.read()
-
-                # Provide download button for other files
-                st.download_button(
-                    label=f"Download {filename}",
-                    data=file_data,
-                    file_name=filename,
-                    mime="application/octet-stream",
-                )
-
-
+            st.download_button(
+                label=f"Download {filename}",
+                data=file_data,
+                file_name=filename,
+                mime="application/octet-stream",
+            )
    # else:
         #st.info("No files available for download. Please submit the form to generate files.")
 
