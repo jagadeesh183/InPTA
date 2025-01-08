@@ -61,17 +61,17 @@ def display_form():
     threshold_angle = st.number_input("Threshold Separation Angle (degrees)", min_value=0.0, step=0.1)
     observatory_name = st.selectbox("Select Observatory", ["GMRT", "VLA"])
     
-    summary_file = create_or_clear_directory(OUTPUT_DIR)
-    with open(summary_file, 'a') as file:
-        file.write(f"Observatory Name: {observatory_name} \n")
-        file.write(f"Start Time: {start_time_ist} \n")
-        file.write(f"Observation Duration: {observation_duration} \n")
+    
 
     if st.button("Submit"):
         if srclist_data.strip() and observatory_name:
             with st.spinner("Processing..."):
                 create_or_clear_directory(OUTPUT_DIR)
                 summary_file = os.path.join(OUTPUT_DIR, "summary.txt")
+                with open(summary_file, 'a') as file:
+                    file.write(f"Observatory Name: {observatory_name} \n")
+                    file.write(f"Start Time: {start_time_ist} \n")
+                    file.write(f"Observation Duration: {observation_duration} \n")
 
                 main(
                     OBSRV_COORD_FILE,
