@@ -98,8 +98,8 @@ def display_form():
     if "summary_contents" in st.session_state:
         st.subheader("Summary File Contents:")
         st.code(st.session_state["summary_contents"], language="text")
-    else:
-        st.warning("No summary file available. Please submit the form.")
+    #else:
+        #st.warning("No summary file available. Please submit the form.")
 
 
 
