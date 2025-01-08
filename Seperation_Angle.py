@@ -60,6 +60,11 @@ def display_form():
     observation_duration = st.number_input("Observation Duration (in hours)", min_value=0.0, step=0.1)
     threshold_angle = st.number_input("Threshold Separation Angle (degrees)", min_value=0.0, step=0.1)
     observatory_name = st.selectbox("Select Observatory", ["GMRT", "VLA"])
+    summary_file = create_or_clear_directory(outputfolder)
+    with open(summary_file, 'a') as file:
+        file.write(f"Observatory Name: {observatory_name} \n")
+        file.write(f"Start Time: {start_time_ist} \n")
+        file.write(f"Observation Duration: {observation_duration} \n")
 
     if st.button("Submit"):
         if srclist_data.strip() and observatory_name:
