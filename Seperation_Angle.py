@@ -125,6 +125,7 @@ def display_pdfs():
                 file_name=filename,
                 mime="application/octet-stream",
             )
+
    # else:
         #st.info("No files available for download. Please submit the form to generate files.")
 
