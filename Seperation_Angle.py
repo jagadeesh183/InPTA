@@ -16,10 +16,15 @@ st.set_page_config(
 
 # Paths
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_DIR = os.path.join(BASE_DIR, "static")
 OUTPUT_DIR = os.path.join(BASE_DIR, "output_final")
 SRCLIST_FILE = os.path.join(BASE_DIR, "Srclist.txt")
 OBSRV_COORD_FILE = os.path.join(BASE_DIR, "ObservatoryCoord.txt")
+
+# Initialize session state
+if "output_folder" not in st.session_state:
+    st.session_state["output_folder"] = None
+if "generated_files" not in st.session_state:
+    st.session_state["generated_files"] = []
 
 def display_header():
     with open("InPTA_logo-removebg.png", "rb") as logo_file:
@@ -56,15 +61,12 @@ def display_form():
     threshold_angle = st.number_input("Threshold Separation Angle (degrees)", min_value=0.0, step=0.1)
     observatory_name = st.selectbox("Select Observatory", ["GMRT", "VLA"])
 
-    summary_file = create_or_clear_directory(OUTPUT_DIR)
-    with open(summary_file, "a") as file:
-        file.write(f"Observatory Name: {observatory_name}\n")
-        file.write(f"Start Time: {start_time_ist}\n")
-        file.write(f"Observation Duration: {observation_duration}\n")
-
     if st.button("Submit"):
         if srclist_data.strip() and observatory_name:
             with st.spinner("Processing..."):
+                create_or_clear_directory(OUTPUT_DIR)
+                summary_file = os.path.join(OUTPUT_DIR, "summary.txt")
+
                 main(
                     OBSRV_COORD_FILE,
                     OUTPUT_DIR,
@@ -75,34 +77,31 @@ def display_form():
                     threshold_angle,
                     observatory_name,
                 )
-            st.success("Processing complete. Please find the output below.")
 
-            with open(summary_file, "r") as file:
-                summary_contents = file.read()
-            st.subheader("Summary File Contents:")
-            st.code(summary_contents, language="text")
+                # Update session state
+                st.session_state["output_folder"] = OUTPUT_DIR
+                st.session_state["generated_files"] = [
+                    f for f in os.listdir(OUTPUT_DIR) if os.path.isfile(os.path.join(OUTPUT_DIR, f))
+                ]
 
-            st.session_state["output_folder"] = OUTPUT_DIR  # Ensure output folder persists
+            st.success("Processing complete. Files are ready for download below.")
 
 def display_pdfs():
-    if "output_folder" not in st.session_state:
-        return
-
-    output_folder = st.session_state["output_folder"]
-    st.subheader("View Generated PDFs:")
-
-    for filename in os.listdir(output_folder):
-        if filename.endswith(".pdf"):
-            file_path = os.path.join(output_folder, filename)
-            with open(file_path, "rb") as pdf_file:
-                pdf_data = pdf_file.read()
+    if st.session_state["output_folder"] and st.session_state["generated_files"]:
+        st.subheader("View and Download Generated Files:")
+        for filename in st.session_state["generated_files"]:
+            file_path = os.path.join(st.session_state["output_folder"], filename)
+            with open(file_path, "rb") as file:
+                file_data = file.read()
 
             st.download_button(
                 label=f"Download {filename}",
-                data=pdf_data,
+                data=file_data,
                 file_name=filename,
-                mime="application/pdf",
+                mime="application/octet-stream",
             )
+    else:
+        st.info("No files available for download. Please submit the form to generate files.")
 
 def display_footer():
     with open("download.jpeg", "rb") as footer_file:
