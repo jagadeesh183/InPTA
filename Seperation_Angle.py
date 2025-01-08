@@ -85,16 +85,16 @@ def display_form():
                 ]
 
             st.success("Processing complete. Files are ready for download below.")
-            st.success(f"Please find the Output below")  # Success message
             
-            # Save the output folder in session state
-            st.session_state['output_folder'] = outputfolder
-            
-            # Read and display the contents of the summary file
-            with open(summary_file, 'r') as file:
-                summary_contents = file.read()
-            st.subheader("Summary File Contents:")
-            st.code(summary_contents, language="text")
+            # Check and display summary file
+            if os.path.exists(summary_file):
+                with open(summary_file, 'r') as file:
+                    summary_contents = file.read()
+                st.subheader("Summary File Contents:")
+                st.code(summary_contents, language="text")
+            else:
+                st.warning("Summary file not found!")
+
 
 def display_pdfs():
     if st.session_state["output_folder"] and st.session_state["generated_files"]:
