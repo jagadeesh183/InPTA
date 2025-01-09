@@ -385,7 +385,7 @@ if __name__ == "__main__":
         
     summary_file = create_or_clear_directory(outputfolder)
     
-    #obs_name = "GMRT" # you might include this as well in the command-line argument in future when we deal with other observatories. Te obsrvcoord file and the script is already prepared to take account of this
+    obs_name = "GMRT" # you might include this as well in the command-line argument in future when we deal with other observatories. Te obsrvcoord file and the script is already prepared to take account of this
     
     with open(summary_file, 'a') as file:
         file.write(f"Observatory Name: {obs_name} \n")
