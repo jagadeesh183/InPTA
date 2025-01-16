@@ -63,18 +63,18 @@ def display_header():
 def display_form():
     st.title("Observatory Data Input")
 
-    srclist_data = st.text_area("Paste Srclist Data Here", placeholder="Paste the contents of Srclist.txt")
+    srclist_data = st.text_area("Paste Source List", placeholder="Paste the contents of Source List")
 
     if srclist_data.strip():
         with open(SRCLIST_FILE, "w") as file:
             file.write(srclist_data)
 
-    observation_date = st.date_input("Observation Date (DD-MM-YYYY)")
-    observation_start_time = st.text_input("Observation Start Time (HH:MM:SS)", placeholder="HH:MM:SS")
+    observation_date = st.date_input("Observation Date (YYYY/DD/MM)")
+    observation_start_time = st.text_input("Observation Start Time in IST (HH:MM:SS)", placeholder="HH:MM:SS")
     start_time_ist = f"{observation_date} {observation_start_time}"
     observation_duration = st.number_input("Observation Duration (in hours)", min_value=0.0, step=0.1)
     threshold_angle = st.number_input("Threshold Separation Angle (degrees)", min_value=0.0, step=0.1)
-    observatory_name = st.selectbox("Select Observatory", ["", "GMRT", "VLA"])
+    observatory_name = st.selectbox("Select Observatory", ["Please select your obs name", "GMRT"])
     
     
 
