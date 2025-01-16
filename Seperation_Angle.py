@@ -63,7 +63,25 @@ def display_header():
 def display_form():
     st.title("Observatory Data Input")
 
-    srclist_data = st.text_area("Paste Source List", placeholder="Paste the contents of Source List")
+    # Add custom CSS for monospace font in text area
+    custom_text_area_style = """
+        <style>
+        textarea {
+            font-family: monospace !important;
+            font-size: 14px !important;
+            line-height: 1.5 !important;
+        }
+        </style>
+    """
+    st.markdown(custom_text_area_style, unsafe_allow_html=True)
+    
+    # Updated text area
+    srclist_data = st.text_area(
+        "Paste Source List", 
+        placeholder="Paste the contents of Source List",
+        height=300  # Optional: Adjust height as needed
+    )
+
 
     if srclist_data.strip():
         with open(SRCLIST_FILE, "w") as file:
