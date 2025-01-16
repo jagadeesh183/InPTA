@@ -1,5 +1,5 @@
 mkdir .streamlit
-echo "[server]" > .streamlit/config.toml
+echo "[server]" > config.toml
 
 [server]
 enableCORS = false
