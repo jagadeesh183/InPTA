@@ -4,27 +4,25 @@ from script_animate_SepAng_ReadFile_SrcList import main, create_or_clear_directo
 import os
 import base64
 
-# CSS to hide Streamlit elements
-
 
 # Set the favicon and layout
 with open("download.jpeg", "rb") as image_file:
     base64_icon = base64.b64encode(image_file.read()).decode()
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+
+st.markdown(hide_st_style, unsafe_allow_html=True)
 
 st.set_page_config(
     page_title="Observatory Data Input",
     page_icon=f"data:image/jpeg;base64,{base64_icon}",
     layout="wide"
 )
-# CSS to hide Streamlit branding and collaboration buttons
-# CSS to hide Streamlit footer
-hide_streamlit_footer = """
-    <style>
-    footer {visibility: hidden;}
-    </style>
-"""
-st.markdown(hide_streamlit_footer, unsafe_allow_html=True)
-
 
 # Paths
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
