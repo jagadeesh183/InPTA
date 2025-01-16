@@ -5,13 +5,7 @@ import os
 import base64
 
 # CSS to hide Streamlit elements
-hide_streamlit_style = """
-    <style>
-    #MainMenu {visibility: hidden;} /* Hides the hamburger menu */
-    footer {visibility: hidden;}   /* Hides the footer branding and GitHub link */
-    </style>
-"""
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 
 # Set the favicon and layout
 with open("download.jpeg", "rb") as image_file:
@@ -22,6 +16,13 @@ st.set_page_config(
     page_icon=f"data:image/jpeg;base64,{base64_icon}",
     layout="wide"
 )
+hide_streamlit_style = """
+    <style>
+    #MainMenu {visibility: hidden;} /* Hides the hamburger menu */
+    footer {visibility: hidden;}   /* Hides the footer branding and GitHub link */
+    </style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 # Paths
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
