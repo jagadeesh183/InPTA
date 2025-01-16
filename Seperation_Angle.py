@@ -20,10 +20,13 @@ hide_st_style = """
             #MainMenu {visibility: hidden;}
             footer {visibility: hidden;}
             header {visibility: hidden;}
+            #stSidebar {visibility: hidden;}
+            .stApp {padding-top: 0 !important;}
+            .css-1u3zpt6 {visibility: hidden;} /* This hides the user options menu */
             </style>
             """
-
 st.markdown(hide_st_style, unsafe_allow_html=True)
+
 # Paths
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_DIR = os.path.join(BASE_DIR, "output_final")
