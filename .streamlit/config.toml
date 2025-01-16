@@ -1,6 +1,9 @@
 [server]
-enableCORS = false
 headless = true
+enableCORS = false
+
+[browser]
+gatherUsageStats = false
 
 [theme]
 primaryColor = "#4CAF50"
@@ -8,13 +11,3 @@ backgroundColor = "#F5F5F5"
 secondaryBackgroundColor = "#FFFFFF"
 textColor = "#000000"
 font = "sans serif"
-
-[browser]
-gatherUsageStats = false
-
-hide_streamlit_style = """
-    <style>
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    </style>
-"""
