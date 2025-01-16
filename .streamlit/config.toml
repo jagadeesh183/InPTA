@@ -2,7 +2,7 @@
 base = "light"
 
 [server]
-headless = true
+headless = false
 
 [browser]
 gatherUsageStats = false
