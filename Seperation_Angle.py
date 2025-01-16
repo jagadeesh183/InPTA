@@ -17,13 +17,14 @@ st.set_page_config(
     layout="wide"
 )
 # CSS to hide Streamlit branding and collaboration buttons
-hide_bottom_icons = """
-    <style>
-    [data-testid="stDecoration"] {visibility: hidden;} /* Hides the Streamlit icon */
-    [data-testid="stStatusWidget"] {visibility: hidden;} /* Hides the other button */
-    </style>
+hide_st_style = """
+<style>
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+</style>
 """
-st.markdown(hide_bottom_icons, unsafe_allow_html=True)
+
+st.markdown(hide_st_style, unsafe_allow_html=True)
 
 
 # Paths
