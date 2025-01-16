@@ -8,6 +8,13 @@ import base64
 # Set the favicon and layout
 with open("download.jpeg", "rb") as image_file:
     base64_icon = base64.b64encode(image_file.read()).decode()
+
+st.set_page_config(
+    page_title="Observatory Data Input",
+    page_icon=f"data:image/jpeg;base64,{base64_icon}",
+    layout="wide"
+)
+
 hide_st_style = """
             <style>
             #MainMenu {visibility: hidden;}
@@ -17,13 +24,6 @@ hide_st_style = """
             """
 
 st.markdown(hide_st_style, unsafe_allow_html=True)
-
-st.set_page_config(
-    page_title="Observatory Data Input",
-    page_icon=f"data:image/jpeg;base64,{base64_icon}",
-    layout="wide"
-)
-
 # Paths
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_DIR = os.path.join(BASE_DIR, "output_final")
