@@ -16,13 +16,15 @@ st.set_page_config(
     page_icon=f"data:image/jpeg;base64,{base64_icon}",
     layout="wide"
 )
-hide_streamlit_style = """
+# CSS to hide Streamlit branding and collaboration buttons
+hide_bottom_icons = """
     <style>
-    #MainMenu {visibility: hidden;} /* Hides the hamburger menu */
-    footer {visibility: hidden;}   /* Hides the footer branding and GitHub link */
+    [data-testid="stDecoration"] {visibility: hidden;} /* Hides the Streamlit icon */
+    [data-testid="stStatusWidget"] {visibility: hidden;} /* Hides the other button */
     </style>
 """
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+st.markdown(hide_bottom_icons, unsafe_allow_html=True)
+
 
 # Paths
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
