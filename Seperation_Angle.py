@@ -4,6 +4,15 @@ from script_animate_SepAng_ReadFile_SrcList import main, create_or_clear_directo
 import os
 import base64
 
+# CSS to hide Streamlit elements
+hide_streamlit_style = """
+    <style>
+    #MainMenu {visibility: hidden;} /* Hides the hamburger menu */
+    footer {visibility: hidden;}   /* Hides the footer branding and GitHub link */
+    </style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 # Set the favicon and layout
 with open("download.jpeg", "rb") as image_file:
     base64_icon = base64.b64encode(image_file.read()).decode()
