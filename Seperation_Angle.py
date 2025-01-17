@@ -73,21 +73,17 @@ def display_form():
     }
     </style>
     """
-    st.markdown("**Source List Format:**")
+    st.markdown("**Source List:**")
     st.markdown("""
-    | **Source** | **RA**          | **Date**          | **Epoch** | **Obs Duration** |
+    | **Source** | **RA**          | **Date**          | **Epoch** | **Observation Duration** |
     |------------|-----------------|------------------|-----------|------------------|
     """)
 
-    # Text area for source list input
-    # Text area for source list input
     srclist_data = st.text_area(
-    label=" ",  # Use a space to suppress the label but avoid extra newline
+    label=" ",  
     placeholder="Paste the contents of the source list here...",
-    height=300  # Optional: Adjust height as needed
+    height=300 
 )
-
-
 
 # Updated text area
     # srclist_data = st.text_area(
