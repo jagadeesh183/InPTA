@@ -80,7 +80,7 @@ def display_form():
     """)
 
     # Text area for source list input
-    srclist_data = st.text_area(
+    srclist_data = st.text_area("",
         placeholder="Paste the contents of the source list here...",
         height=300  # Optional: Adjust height as needed
     )
