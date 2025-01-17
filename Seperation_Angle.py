@@ -82,7 +82,7 @@ def display_form():
     # Text area for source list input
     # Text area for source list input
     srclist_data = st.text_area(
-    label=" ",  # Use a space to suppress the label but avoid extra newline
+    label="\u200b",  # Use a space to suppress the label but avoid extra newline
     placeholder="Paste the contents of the source list here...",
     height=300  # Optional: Adjust height as needed
 )
