@@ -73,17 +73,25 @@ def display_form():
     }
     </style>
     """
-    st.markdown(custom_text_area_style, unsafe_allow_html=True)
+    st.markdown("**Source List Format:**")
+    st.markdown("""
+    | **Source** | **RA**          | **DEC**          | **Epoch** | **Obs Duration** |
+    |------------|-----------------|------------------|-----------|------------------|
+    """)
 
-# Add headings for the source list
-    source_list_headings = "Source\tRA\tDEC\tEpoch\tObs Duration\n"
-
-# Updated text area
+    # Text area for source list input
     srclist_data = st.text_area(
         "Paste Source List",
-        placeholder=f"{source_list_headings}Paste the contents of Source List here...",
+        placeholder="Paste the contents of the source list here...",
         height=300  # Optional: Adjust height as needed
     )
+
+# Updated text area
+    # srclist_data = st.text_area(
+    #     "Paste Source List",
+    #     placeholder=f"{source_list_headings}Paste the contents of Source List here...",
+    #     height=300  # Optional: Adjust height as needed
+    # )
 
 
     if srclist_data.strip():
