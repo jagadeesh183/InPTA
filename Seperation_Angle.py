@@ -94,7 +94,7 @@ def display_form():
     .source-header div:nth-child(2),
     .source-header div:nth-child(3),
     .source-header div:nth-child(4) {
-        flex: 0.5; /* Adjust width for "RA", "Dec", and "Epoch" */
+        flex: 1; /* Adjust width for "RA", "Dec", and "Epoch" */
     }
     </style>
     """
