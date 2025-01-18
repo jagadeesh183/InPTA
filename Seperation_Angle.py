@@ -276,7 +276,7 @@ def display_footer():
             </div>
         </div>
         <div style="text-align: center; font-size: 12px; margin-top: 10px;">
-            <p style="margin: 0;">Developed by <strong>S Jagadeesh</strong> & <strong>Shaswata Chowdhury</strong></p>
+            <p style="margin: 0;">Developed by <strong>Jagadeesh S</strong> & <strong>Shaswata Chowdhury</strong></p>
             <a href="mailto:shaswataphyres@gmail.com" style="color: blue; text-decoration: none; font-size: 12px;">Contact Us</a>
         </div>
     </div>
