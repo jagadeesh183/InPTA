@@ -81,24 +81,20 @@ def display_form():
         font-size: 14px;
         font-weight: bold;
         margin-bottom: 0px; /* Removes extra space below headers */
-        gap: 15px; /* Controls spacing between columns */
+        gap: 10px; /* Adjust spacing between columns */
         padding-left: 1rem; /* Adds left padding to align "Source" */
     }
     .source-header div {
         flex: 1; /* Equal width for columns */
         text-align: left; /* Align text to the left */
     }
-    .source-header div:first-child {
-        flex: 0.5; /* Make the "Source" column wider */
+    .source-header div:nth-child(1) {
+        flex: 1.5; /* Adjust width for "Source" */
     }
-    .source-header div:second-child {
-        flex: 0.5; /* Make the "Source" column wider */
-    }
-    .source-header div:third-child {
-        flex: 0.5; /* Make the "Source" column wider */
-    }
-    .source-header div:fourth-child {
-        flex: 0.5; /* Make the "Source" column wider */
+    .source-header div:nth-child(2),
+    .source-header div:nth-child(3),
+    .source-header div:nth-child(4) {
+        flex: 1; /* Adjust width for "RA", "Dec", and "Epoch" */
     }
     </style>
     """
