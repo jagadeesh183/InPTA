@@ -23,7 +23,7 @@ hide_st_style = """
     #stSidebar {visibility: hidden;} /* Hides the sidebar */
     .stApp {
         padding-top: 0 !important;
-        margin-top: -50px; /* Adjust margin to remove space */
+        margin-top: -100px; /* Adjust margin to remove space */
     }
     html, body {
         margin: 0;
