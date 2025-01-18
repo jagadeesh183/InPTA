@@ -85,16 +85,22 @@ def display_form():
     st.markdown(custom_text_area_style, unsafe_allow_html=True)
 
     # Display the header above the source list box
-    st.markdown("**Source List Format**")
+    st.markdown(
+        """
+        <div style="font-family: monospace; font-size: 14px; font-weight: bold;">
+        Source&nbsp;&nbsp;&nbsp;&nbsp;RA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Epoch
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
     # Text area for the source list
     srclist_data = st.text_area(
-        label="Source\t\tRA\t\tDec\t\tEpoch",
+        label="",
         placeholder="Paste the contents of the source list here...",
         height=300,
         key="source_list",
     )
-
 # Updated text area
     # srclist_data = st.text_area(
     #     "Paste Source List",
