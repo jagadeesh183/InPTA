@@ -257,11 +257,6 @@ def display_footer():
         </div>
     </div>
     """
-    st.markdown(
-        """
-        The description of the InPTA in the bottom: "Indian Pulsar Timing Array Experiment (InPTA) is an Indo-Japanese collaboration pulsar timing experiment searching for low frequency nanoHz Gravitational Waves in operation since 2016.
-        """
-    ,unsafe_allow_html=True)
     st.markdown(footer_html, unsafe_allow_html=True)
 
 # Main App
