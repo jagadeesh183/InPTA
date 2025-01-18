@@ -71,27 +71,36 @@ def display_header():
 def display_form():
     st.title("Observatory Data Input")
 
-    # Add custom CSS for monospace font in text area
+    # Add custom CSS for monospace font in the text area
     custom_text_area_style = """
     <style>
     textarea {
         font-family: monospace !important;
         font-size: 14px !important;
         line-height: 1.5 !important;
+        white-space: pre !important; /* Ensures spacing is maintained */
     }
     </style>
     """
-    st.markdown("**Source List:**")
-    st.markdown("""
-    | **Source** | **RA**          | **Date**          | **Epoch** | **Observation Duration** |
-    |------------|-----------------|------------------|-----------|------------------|
-    """)
+    st.markdown(custom_text_area_style, unsafe_allow_html=True)
 
+    # Display the header above the source list box
+    st.markdown("**Source List Format**")
+    st.markdown(
+        """
+        | **Source** | **RA**          | **DEC**           | **Epoch** | **Obs Duration** |
+        |------------|-----------------|-------------------|-----------|------------------|
+        """,
+        unsafe_allow_html=True,
+    )
+
+    # Text area for the source list
     srclist_data = st.text_area(
-    label=" ",  
-    placeholder="Paste the contents of the source list here...",
-    height=300 
-)
+        label="",
+        placeholder="Paste the contents of the source list here...",
+        height=300,
+        key="source_list",
+    )
 
 # Updated text area
     # srclist_data = st.text_area(
