@@ -255,6 +255,24 @@ def display_footer():
                 <p style="margin: 0; font-size: 12px; color: #000000;">
                     Indian Pulsar Timing Array Experiment (InPTA) is an Indo-Japanese collaboration pulsar timing experiment searching for low frequency nanoHz Gravitational Waves in operation since 2016.
                 </p>
+                <!-- Social Media Icons -->
+    <div style="margin-top: 10px; display: flex; justify-content: flex-start; align-items: center; gap: 10px;">
+        <a href="https://www.facebook.com/indianpta/" target="_blank" style="text-decoration: none;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" style="width: 24px; height: 24px;">
+        </a>
+        <a href="https://x.com/InPTA_GW" target="_blank" style="text-decoration: none;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Twitter-logo.svg" alt="Twitter" style="width: 24px; height: 24px;">
+        </a>
+        <a href="https://github.com/inpta" target="_blank" style="text-decoration: none;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub" style="width: 24px; height: 24px;">
+        </a>
+        <a href="https://www.researchgate.net/lab/Indian-Pulsar-Timing-Array-Bhal-CHANDRA-Joshi" target="_blank" style="text-decoration: none;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/ResearchGate_icon_SVG.svg" alt="ResearchGate" style="width: 24px; height: 24px;">
+        </a>
+        <a href="https://www.instagram.com/indian_pta/" target="_blank" style="text-decoration: none;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" style="width: 24px; height: 24px;">
+        </a>
+    </div>
             </div>
         </div>
         <div style="text-align: center; font-size: 12px; margin-top: 10px;">
