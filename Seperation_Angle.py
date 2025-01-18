@@ -92,31 +92,31 @@ def display_form():
         flex: 0.8; /* Slightly larger width for "Source" */
     }
     </style>
-"""
-
-# Apply custom CSS
-st.markdown(custom_css, unsafe_allow_html=True)
-
-# Render the header with minimal spacing
-st.markdown(
     """
-    <div class="source-header">
-        <div>Source</div>
-        <div>RA</div>
-        <div>Dec</div>
-        <div>Epoch</div>
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
-
-# Text area for the source list
-srclist_data = st.text_area(
-    label="",
-    placeholder="Paste the contents of the source list here...",
-    height=250,
-    key="source_list",
-)
+    
+    # Apply custom CSS
+    st.markdown(custom_css, unsafe_allow_html=True)
+    
+    # Render the header with minimal spacing
+    st.markdown(
+        """
+        <div class="source-header">
+            <div>Source</div>
+            <div>RA</div>
+            <div>Dec</div>
+            <div>Epoch</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    
+    # Text area for the source list
+    srclist_data = st.text_area(
+        label="",
+        placeholder="Paste the contents of the source list here...",
+        height=250,
+        key="source_list",
+    )
 
 # Updated text area
     # srclist_data = st.text_area(
