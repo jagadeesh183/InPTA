@@ -248,7 +248,7 @@ def display_footer():
                         </div>
                 </div>
             </div>
-            <div style="text-align: left; max-width: 50%; padding-left: 440px;">
+            <div style="text-align: left; max-width: 50%; padding-left: 400px;">
                 <p style="margin: 0; font-size: 12px; color: #000000; font-weight: bold;">
                     Indian Pulsar Timing Array
                 </p>
