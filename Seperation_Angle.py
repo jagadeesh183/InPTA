@@ -80,15 +80,30 @@ def display_form():
         line-height: 1.5 !important;
         white-space: pre !important; /* Ensures spacing is maintained */
     }
+    .source-header {
+        display: flex;
+        justify-content: space-between;
+        font-family: monospace;
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 5px; /* Removes extra space */
+    }
+    .source-header div {
+        width: 25%; /* Ensures consistent width for each column */
+        text-align: left; /* Align text to the left */
+    }
     </style>
     """
     st.markdown(custom_text_area_style, unsafe_allow_html=True)
 
-    # Display the header above the source list box
+    # Display the header above the source list box with proper alignment
     st.markdown(
         """
-        <div style="font-family: monospace; font-size: 14px; font-weight: bold;">
-        Source&nbsp;&nbsp;&nbsp;&nbsp;RA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Epoch
+        <div class="source-header">
+            <div>Source</div>
+            <div>RA</div>
+            <div>Dec</div>
+            <div>Epoch</div>
         </div>
         """,
         unsafe_allow_html=True,
