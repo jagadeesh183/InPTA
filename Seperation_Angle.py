@@ -282,8 +282,8 @@ def display_footer():
 
 # Main App
 if __name__ == "__main__":
-    display_view_settings()
     display_header()
     display_form()
     display_pdfs()
     display_footer()
+    display_view_settings()
