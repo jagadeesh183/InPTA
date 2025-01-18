@@ -86,6 +86,12 @@ def display_form():
     .source-header div {
         text-align: left; /* Align text to the left */
     }
+    textarea {
+        font-family: monospace !important; /* Ensures monospace font */
+        white-space: pre !important; /* Retains all spaces and formatting */
+        font-size: 14px; /* Ensures readable font size */
+        line-height: 1.5; /* Makes it more legible */
+    }
     </style>
     """
     
