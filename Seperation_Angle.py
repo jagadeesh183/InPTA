@@ -72,14 +72,8 @@ def display_form():
     st.title("Observatory Data Input")
 
     # Add custom CSS for monospace font in the text area
-    custom_text_area_style = """
+    custom_css = """
     <style>
-    textarea {
-        font-family: monospace !important;
-        font-size: 14px !important;
-        line-height: 1 !important;
-        white-space: pre !important; /* Ensures spacing is maintained */
-    }
     .source-header {
         display: flex;
         justify-content: flex-start;
@@ -87,22 +81,25 @@ def display_form():
         font-size: 14px;
         font-weight: bold;
         margin-bottom: 0px; /* Removes extra space below headers */
-        gap: 10px; /* Reduces spacing between header columns */
-        padding-left: 1rem; /* Adds left padding to align "Source" with one tab */
+        gap: 15px; /* Controls spacing between columns */
+        padding-left: 1rem; /* Adds left padding to align "Source" */
     }
     .source-header div {
-        flex: 0.5; /* Dynamically adjust width of columns */
+        flex: 1; /* Equal width for columns */
         text-align: left; /* Align text to the left */
+    }
+    .source-header div:first-child {
+        flex: 2; /* Make the "Source" column wider */
     }
     </style>
     """
-    st.markdown(custom_text_area_style, unsafe_allow_html=True)
+    st.markdown(custom_css, unsafe_allow_html=True)
 
-    # Display the header above the source list box with proper alignment
+    # Render the header
     st.markdown(
         """
         <div class="source-header">
-            <div>Source \t RA</div>
+            <div>Source</div>
             <div>RA</div>
             <div>Dec</div>
             <div>Epoch</div>
