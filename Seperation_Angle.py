@@ -75,21 +75,16 @@ def display_form():
     custom_css = """
     <style>
     .source-header {
-        display: flex;
-        justify-content: flex-start;
+        display: grid;
+        grid-template-columns: 100px 100px 100px 100px; /* Fixed-width columns */
         font-family: monospace;
         font-size: 14px;
         font-weight: bold;
         margin-bottom: 0px; /* Removes extra space below headers */
-        gap: 0.01rem; /* Minimal spacing between columns to mimic a single tab */
         padding-left: 1rem; /* Adds left padding for "Source" */
     }
     .source-header div {
-        flex: 1; /* Equal width for all columns */
         text-align: left; /* Align text to the left */
-    }
-    .source-header div:nth-child(1) {
-        flex: 0.8; /* Slightly larger width for "Source" */
     }
     </style>
     """
@@ -117,6 +112,7 @@ def display_form():
         height=250,
         key="source_list",
     )
+
 
 # Updated text area
     # srclist_data = st.text_area(
