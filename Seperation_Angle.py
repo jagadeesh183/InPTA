@@ -93,7 +93,7 @@ def display_form():
     #     """,
     #     unsafe_allow_html=True,
     # )
-    st.markdown("**Source**    **RA**    **DEC**    **Epoch**")
+    st.markdown("**Source**    \t**RA**    **DEC**    **Epoch**")
 
     # Text area for the source list
     srclist_data = st.text_area(
