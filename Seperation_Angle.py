@@ -89,12 +89,12 @@ def display_form():
         text-align: left; /* Align text to the left */
     }
     .source-header div:nth-child(1) {
-        flex: 1.5; /* Adjust width for "Source" */
+        flex: 0.5; /* Adjust width for "Source" */
     }
     .source-header div:nth-child(2),
     .source-header div:nth-child(3),
     .source-header div:nth-child(4) {
-        flex: 1; /* Adjust width for "RA", "Dec", and "Epoch" */
+        flex: 0.5; /* Adjust width for "RA", "Dec", and "Epoch" */
     }
     </style>
     """
