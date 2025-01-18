@@ -86,37 +86,10 @@ def display_header():
         unsafe_allow_html=True,
     )
 
-def display_view_settings():
-    st.sidebar.markdown("### Settings")
-    view_mode = st.sidebar.radio("Choose View Mode", options=["Wide", "Narrow"], index=0)
-    theme_mode = st.sidebar.radio("Choose Theme", options=["Light", "Dark"], index=0)
-
-    # Adjust layout and theme
-    if view_mode == "Wide":
-        st.set_page_config(layout="wide")
-    else:
-        st.set_page_config(layout="centered")
-
-    custom_css = """
-    <style>
-        body {
-            background-color: #ffffff !important;
-            color: #000000 !important;
-        }
-    </style>
-    """ if theme_mode == "Light" else """
-    <style>
-        body {
-            background-color: #1e1e1e !important;
-            color: #ffffff !important;
-        }
-    </style>
-    """
-    st.markdown(custom_css, unsafe_allow_html=True)
 
 
 def display_form():
-    st.text("This tool evaluates the solar proximity of sources observed using the uGMRT. It identifies whether any sources -- both target and phasing -- are within a specified angular separation threshold from the Sun during the entire observation session.")
+    #st.text("This tool evaluates the solar proximity of sources observed using the uGMRT. It identifies whether any sources -- both target and phasing -- are within a specified angular separation threshold from the Sun during the entire observation session.")
 
     # Add custom CSS for monospace font in the text area
     custom_css = """
@@ -286,4 +259,3 @@ if __name__ == "__main__":
     display_form()
     display_pdfs()
     display_footer()
-    display_view_settings()
