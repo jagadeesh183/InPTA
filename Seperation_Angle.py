@@ -235,51 +235,52 @@ def display_footer():
 
     footer_html = f"""
         <div style="background-color: #f0f0f0; color: black; padding: 20px; font-family: Arial, sans-serif; position: relative; bottom: 0; left: 0; width: 100vw; z-index: 1000; margin: 0;">
-        <div style="display: flex; justify-content: space-between; align-items: center; max-width: 100%; padding: 0 20px;">
-            <div style="display: flex; align-items: center;">
-                <img src="data:image/jpeg;base64,{encoded_footer}" alt="Footer Logo" style="width: 70px; height: 70; margin-right: 15px;">
-                <div>
-                    <h1 style="color: #00008B; margin: 0;">Indian Pulsar Timing Array</h1>
-                    <div style="margin: 0; display: flex; align-items: center;">
-                        <a href="https://inpta.iitr.ac.in/" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">Home</a>
-                        <a href="https://inpta.iitr.ac.in/research.html" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">Research</a>
-                        <a href="https://inpta.iitr.ac.in/publications.html" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">Publications</a>
-                        <a href="https://inpta.iitr.ac.in/resources.html" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">Resource</a>
-                    </div>
-                </div>
-            </div>
-            <div style="text-align: left; max-width: 50%; padding-left: 400px;">
-                <p style="margin: 0; font-size: 12px; color: #000000; font-weight: bold;">
-                    Indian Pulsar Timing Array
-                </p>
-                <p style="margin: 0; font-size: 12px; color: #000000;">
-                    Indian Pulsar Timing Array Experiment (InPTA) is an Indo-Japanese collaboration pulsar timing experiment searching for low frequency nanoHz Gravitational Waves in operation since 2016.
-                </p>
-                <!-- Social Media Icons -->
-                <div style="margin-top: 10px; display: flex; justify-content: flex-start; align-items: center; gap: 10px;">
-                    <a href="https://www.facebook.com/indianpta/" target="_blank" style="text-decoration: none;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" style="width: 24px; height: 24px;">
-                    </a>
-                    <a href="https://x.com/InPTA_GW" target="_blank" style="text-decoration: none;">
-                        <img src="https://avatars.githubusercontent.com/u/50278?s=200&v=4" alt="Twitter" style="width: 24px; height: 24px;">
-                    </a>
-                    <a href="https://github.com/inpta" target="_blank" style="text-decoration: none;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub" style="width: 24px; height: 24px;">
-                    </a>
-                    <a href="https://www.researchgate.net/lab/Indian-Pulsar-Timing-Array-Bhal-CHANDRA-Joshi" target="_blank" style="text-decoration: none;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/ResearchGate_icon_SVG.svg" alt="ResearchGate" style="width: 24px; height: 24px;">
-                    </a>
-                    <a href="https://www.instagram.com/indian_pta/" target="_blank" style="text-decoration: none;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" style="width: 24px; height: 24px;">
-                    </a>
+    <div style="display: flex; justify-content: space-between; align-items: center; max-width: 100%; padding: 0 20px;">
+        <div style="display: flex; align-items: center;">
+            <img src="data:image/jpeg;base64,{encoded_footer}" alt="Footer Logo" style="width: 70px; height: 70; margin-right: 15px;">
+            <div>
+                <h1 style="color: #00008B; margin: 0;">Indian Pulsar Timing Array</h1>
+                <div style="margin: 0; display: flex; align-items: center;">
+                    <a href="https://inpta.iitr.ac.in/" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">Home</a>
+                    <a href="https://inpta.iitr.ac.in/research.html" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">Research</a>
+                    <a href="https://inpta.iitr.ac.in/publications.html" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">Publications</a>
+                    <a href="https://inpta.iitr.ac.in/resources.html" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">Resource</a>
                 </div>
             </div>
         </div>
-        <div style="text-align: center; font-size: 12px; margin-top: 10px;">
-            <p style="margin: 0;">Developed by <strong>S Jagadeesh</strong> & <strong>Shaswata Chowdhury</strong></p>
-            <a href="mailto:shaswataphyres@gmail.com" style="color: blue; text-decoration: none; font-size: 12px;">Contact Us</a>
+        <div style="text-align: left; max-width: 50%; padding-left: 400px;">
+            <p style="margin: 0; font-size: 12px; color: #000000; font-weight: bold;">
+                Indian Pulsar Timing Array
+            </p>
+            <p style="margin: 0; font-size: 12px; color: #000000;">
+                Indian Pulsar Timing Array Experiment (InPTA) is an Indo-Japanese collaboration pulsar timing experiment searching for low frequency nanoHz Gravitational Waves in operation since 2016.
+            </p>
+            <!-- Social Media Icons -->
+            <div style="margin-top: 10px; display: flex; justify-content: flex-start; align-items: center; gap: 10px;">
+                <a href="https://www.facebook.com/indianpta/" target="_blank" style="text-decoration: none;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" style="width: 24px; height: 24px;">
+                </a>
+                <a href="https://x.com/InPTA_GW" target="_blank" style="text-decoration: none;">
+                    <img src="https://avatars.githubusercontent.com/u/50278?s=200&v=4" alt="Twitter" style="width: 24px; height: 24px;">
+                </a>
+                <a href="https://github.com/inpta" target="_blank" style="text-decoration: none;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub" style="width: 24px; height: 24px;">
+                </a>
+                <a href="https://www.researchgate.net/lab/Indian-Pulsar-Timing-Array-Bhal-CHANDRA-Joshi" target="_blank" style="text-decoration: none;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/ResearchGate_icon_SVG.svg" alt="ResearchGate" style="width: 24px; height: 24px;">
+                </a>
+                <a href="https://www.instagram.com/indian_pta/" target="_blank" style="text-decoration: none;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" style="width: 24px; height: 24px;">
+                </a>
+            </div>
         </div>
     </div>
+    <div style="text-align: center; font-size: 12px; margin-top: 10px;">
+        <p style="margin: 0;">Developed by <strong>S Jagadeesh</strong> & <strong>Shaswata Chowdhury</strong></p>
+        <a href="mailto:shaswataphyres@gmail.com" style="color: blue; text-decoration: none; font-size: 12px;">Contact Us</a>
+    </div>
+</div>
+
 
 
     """
