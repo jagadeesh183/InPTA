@@ -81,23 +81,19 @@ def display_form():
         font-size: 14px;
         font-weight: bold;
         margin-bottom: 0px; /* Removes extra space below headers */
-        gap: 10px; /* Adjust spacing between columns */
+        gap: 10px; /* Uniformly reduces spacing between all columns */
         padding-left: 1rem; /* Adds left padding to align "Source" */
     }
     .source-header div {
-        flex: 1; /* Equal width for columns */
+        flex: 1; /* Equal width for all columns */
         text-align: left; /* Align text to the left */
     }
     .source-header div:nth-child(1) {
-        flex: 0.5; /* Adjust width for "Source" */
-    }
-    .source-header div:nth-child(2),
-    .source-header div:nth-child(3),
-    .source-header div:nth-child(4) {
-        flex: 1; /* Adjust width for "RA", "Dec", and "Epoch" */
+        flex: 0.5; /* Slightly larger width for "Source" */
     }
     </style>
-    """
+"""
+
     st.markdown(custom_css, unsafe_allow_html=True)
 
     # Render the header
@@ -117,7 +113,7 @@ def display_form():
     srclist_data = st.text_area(
         label="",
         placeholder="Paste the contents of the source list here...",
-        height=300,
+        height=250,
         key="source_list",
     )
 # Updated text area
