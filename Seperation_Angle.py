@@ -87,17 +87,17 @@ def display_form():
         font-size: 14px;
         font-weight: bold;
         margin-bottom: 5px; /* Removes extra space */
-        gap: 1px; /* Reduces spacing between headers */
+        gap: 5px; /* Reduces spacing between headers */
         padding-left: 1rem; /* Adds left padding to align "Source" with one tab */
     }
     .source-header div {
-        flex: 1; /* Dynamically adjust width of columns */
+        flex: 0.5; /* Dynamically adjust width of columns */
         text-align: left; /* Align text to the left */
     }
     </style>
     """
     st.markdown(custom_text_area_style, unsafe_allow_html=True)
-    st.markdown("<pre style='font-family:monospace;'>Source    RA       Dec       Epoch</pre>", unsafe_allow_html=True)
+    # st.markdown("<pre style='font-family:monospace;'>Source    RA       Dec       Epoch</pre>", unsafe_allow_html=True)
 
     # Display the header above the source list box with proper alignment
     st.markdown(
