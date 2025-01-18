@@ -234,7 +234,7 @@ def display_footer():
         encoded_footer = base64.b64encode(footer_file.read()).decode()
 
     footer_html = f"""
-    <div style="background-color: #f0f0f0; color: black; padding: 20px; font-family: Arial, sans-serif; bottom: 0; left: 0; width: 100%; z-index: 1000;">
+    <div style="background-color: #f0f0f0; color: black; padding: 20px; font-family: Arial, sans-serif; bottom: -100; left: 0; width: 100%; z-index: 1000;">
         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 100%;">
             <div style="display: flex; align-items: center;">
                 <img src="data:image/jpeg;base64,{encoded_footer}" alt="Footer Logo" style="width: 70px; height: 70; margin-right: 15px;">
