@@ -234,8 +234,9 @@ def display_footer():
         encoded_footer = base64.b64encode(footer_file.read()).decode()
 
     footer_html = f"""
-    <div style="background-color: #181818; color: white; padding: 20px; font-family: Arial, sans-serif; width: 100%; z-index: 1000;">
+        <div style="background-color: #181818; color: white; padding: 20px; font-family: Arial, sans-serif; width: 100%; z-index: 1000;">
         <div style="display: flex; justify-content: space-between; align-items: flex-start; width: 100%;">
+            
             <!-- Left Section -->
             <div style="flex: 1;">
                 <h1 style="color: #17a2b8; font-size: 24px; margin-bottom: 10px;">Indian Pulsar Timing Array</h1>
@@ -244,12 +245,12 @@ def display_footer():
                 </p>
                 <p style="margin-top: 20px; font-size: 12px; color: #a1a1a1;">&copy; 2023 Indian Pulsar Timing Array, All rights reserved</p>
             </div>
-
+    
             <!-- Center Section -->
             <div style="flex: 1; text-align: center;">
                 <p style="margin: 0; font-size: 14px; font-weight: bold;">Home | Research | Publications | Resources | Calendar</p>
             </div>
-
+    
             <!-- Right Section -->
             <div style="flex: 1; text-align: right;">
                 <div style="display: flex; justify-content: flex-end; gap: 15px; margin-bottom: 10px;">
@@ -263,6 +264,7 @@ def display_footer():
             </div>
         </div>
     </div>
+
     """
     st.markdown(footer_html, unsafe_allow_html=True)
 
