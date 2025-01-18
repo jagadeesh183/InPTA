@@ -77,19 +77,21 @@ def display_form():
     textarea {
         font-family: monospace !important;
         font-size: 14px !important;
-        line-height: 0.5 !important;
+        line-height: 1.5 !important;
         white-space: pre !important; /* Ensures spacing is maintained */
     }
     .source-header {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         font-family: monospace;
         font-size: 14px;
         font-weight: bold;
         margin-bottom: 5px; /* Removes extra space */
+        gap: 20px; /* Reduces spacing between headers */
+        padding-left: 1.5rem; /* Adds left padding to align "Source" with one tab */
     }
     .source-header div {
-        width: 25%; /* Ensures consistent width for each column */
+        flex: 1; /* Dynamically adjust width of columns */
         text-align: left; /* Align text to the left */
     }
     </style>
