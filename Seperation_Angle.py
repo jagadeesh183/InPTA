@@ -97,6 +97,7 @@ def display_form():
     </style>
     """
     st.markdown(custom_text_area_style, unsafe_allow_html=True)
+    st.markdown("<pre style='font-family:monospace;'>Source    RA       Dec       Epoch</pre>", unsafe_allow_html=True)
 
     # Display the header above the source list box with proper alignment
     st.markdown(
