@@ -87,11 +87,11 @@ def display_form():
         font-size: 14px;
         font-weight: bold;
         margin-bottom: 5px; /* Removes extra space */
-        gap: 10px; /* Reduces spacing between headers */
+        gap: 1px; /* Reduces spacing between headers */
         padding-left: 1.5rem; /* Adds left padding to align "Source" with one tab */
     }
     .source-header div {
-        flex: 2; /* Dynamically adjust width of columns */
+        flex: 1; /* Dynamically adjust width of columns */
         text-align: left; /* Align text to the left */
     }
     </style>
