@@ -102,7 +102,7 @@ def display_form():
     st.markdown(
         """
         <div class="source-header">
-            <div>Source</div>
+            <div>Source \t RA</div>
             <div>RA</div>
             <div>Dec</div>
             <div>Epoch</div>
