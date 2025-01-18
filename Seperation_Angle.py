@@ -89,7 +89,7 @@ def display_form():
         text-align: left; /* Align text to the left */
     }
     .source-header div:first-child {
-        flex: 0.05; /* Make the "Source" column wider */
+        flex: 0.5; /* Make the "Source" column wider */
     }
     </style>
     """
