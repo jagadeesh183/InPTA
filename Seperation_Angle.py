@@ -10,7 +10,7 @@ with open("download.jpeg", "rb") as image_file:
     base64_icon = base64.b64encode(image_file.read()).decode()
 
 st.set_page_config(
-    page_title="Observatory Data Input",
+    page_title="Solar proximity prediction over the uGMRT antennas",
     page_icon=f"data:image/jpeg;base64,{base64_icon}",
     layout="wide"
 )
@@ -137,12 +137,12 @@ def display_form():
         with open(SRCLIST_FILE, "w") as file:
             file.write(srclist_data)
 
-    observation_date = st.date_input("Observation Date (YYYY/DD/MM)")
+    observation_date = st.date_input("Observation Date in IST (YYYY/DD/MM)")
     observation_start_time = st.text_input("Observation Start Time in IST (HH:MM:SS)", placeholder="HH:MM:SS")
     start_time_ist = f"{observation_date} {observation_start_time}"
     observation_duration = st.number_input("Observation Duration (in hours)", min_value=0.0, step=0.1)
     threshold_angle = st.number_input("Threshold Separation Angle (degrees)", min_value=0.0, step=0.1)
-    observatory_name = st.selectbox("Select Observatory", ["Please select your obs name", "GMRT"])
+    observatory_name = st.selectbox("Select Observatory", ["Please select your obs name", "uGMRT"])
     
     
 
