@@ -69,7 +69,7 @@ def display_header():
     st.markdown(header_html, unsafe_allow_html=True)
 
 def display_form():
-    st.title("Observatory Data Input")
+    #st.title("Observatory Data Input")
 
     # Add custom CSS for monospace font in the text area
     custom_css = """
