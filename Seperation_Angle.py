@@ -242,7 +242,7 @@ def display_footer():
                     <h1 style="color: #00008B; margin: 0;">Indian Pulsar Timing Array</h1>
                     <div style="margin: 10px 0; display: flex; align-items: center;">
                         <a href="https://inpta.iitr.ac.in/" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">Home</a>
-                        <a href="https://www.researchgate.net/lab/Indian-Pulsar-Timing-Array-Bhal-CHANDRA-Joshi" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">ResearchGate</a>
+                        <a href="https://inpta.iitr.ac.in/research.html" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">Research</a>
                         <a href="https://inpta.iitr.ac.in/publications.html" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">Publications</a>
                         <a href="https://inpta.iitr.ac.in/resources.html" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">Resource</a>
                         </div>
