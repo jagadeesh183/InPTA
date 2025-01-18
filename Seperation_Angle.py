@@ -230,33 +230,43 @@ def display_pdfs():
         #st.info("No files available for download. Please submit the form to generate files.")
 
 def display_footer():
+    # Encode the small image (footer logo)
     with open("download.jpeg", "rb") as footer_file:
         encoded_footer = base64.b64encode(footer_file.read()).decode()
 
     footer_html = f"""
     <div style="background-color: #f0f0f0; color: black; padding: 20px; font-family: Arial, sans-serif; bottom: 0; left: 0; width: 100%; z-index: 1000;">
-        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 100%;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; width: 100%; max-width: 100%;">
+            <!-- Left Section -->
             <div style="display: flex; align-items: center;">
-                <img src="data:image/jpeg;base64,{encoded_footer}" alt="Footer Logo" style="width: 70px; height: 70; margin-right: 15px;">
+                <img src="data:image/jpeg;base64,{encoded_footer}" alt="Footer Logo" style="width: 60px; height: 60px; margin-right: 15px;">
                 <div>
-                    <h1 style="color: #00008B; margin: 0;">Indian Pulsar Timing Array</h1>
-                    <div style="margin: 10px 0; display: flex; align-items: center;">
-                        <a href="https://inpta.iitr.ac.in/" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">Home</a>
-                        <a href="https://www.instagram.com/indian_pta/" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">Instagram</a>
-                        <a href="https://www.researchgate.net/lab/Indian-Pulsar-Timing-Array-Bhal-CHANDRA-Joshi" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">ResearchGate</a>
-                        <a href="https://inpta.iitr.ac.in/publications.html" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">Publications</a>
-                        <a href="https://github.com/inpta" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">GitHub</a>
-                        <a href="https://x.com/i/flow/login?redirect_after_login=%2FInPTA_GW" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">X</a>
-                        <a href="https://www.facebook.com/indianpta/" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">Facebook</a>
-                    </div>
+                    <h1 style="color: #00008B; margin: 0; font-size: 20px;">Indian Pulsar Timing Array</h1>
                 </div>
             </div>
-            <div style="text-align: left; max-width: 50%; padding-left: 400px;">
-                <p style="margin: 0; font-size: 14px; color: #000000;">
-                    Indian Pulsar Timing Array Experiment (InPTA) is an Indo-Japanese collaboration pulsar timing experiment searching for low frequency nanoHz Gravitational Waves in operation since 2016.
+            <!-- Right Section -->
+            <div style="text-align: left; max-width: 60%; font-size: 14px; line-height: 1.5;">
+                <p style="margin: 0;">
+                    <strong>Indian Pulsar Timing Array Experiment (InPTA)</strong> is an Indo-Japanese collaboration pulsar timing experiment searching for low-frequency nanoHz Gravitational Waves in operation since 2016.
                 </p>
             </div>
         </div>
+        <!-- Social Links Section -->
+        <div style="margin-top: 20px; display: flex; justify-content: center; gap: 20px;">
+            <a href="https://inpta.iitr.ac.in/" target="_blank" style="color: black; text-decoration: none;">
+                <img src="data:image/jpeg;base64,{encoded_footer}" alt="Home" style="width: 30px; height: 30px;">
+            </a>
+            <a href="https://www.instagram.com/indian_pta/" target="_blank" style="color: black; text-decoration: none;">
+                <i class="fa fa-instagram" style="font-size: 30px;"></i>
+            </a>
+            <a href="https://github.com/inpta" target="_blank" style="color: black; text-decoration: none;">
+                <i class="fa fa-github" style="font-size: 30px;"></i>
+            </a>
+            <a href="https://x.com/i/flow/login?redirect_after_login=%2FInPTA_GW" target="_blank" style="color: black; text-decoration: none;">
+                <i class="fa fa-twitter" style="font-size: 30px;"></i>
+            </a>
+        </div>
+        <!-- Credits Section -->
         <div style="text-align: center; font-size: 12px; margin-top: 10px;">
             <p style="margin: 0;">Developed by <strong>S Jagadeesh</strong> & <strong>Shaswata Chowdhury</strong></p>
             <a href="mailto:shaswataphyres@gmail.com" style="color: blue; text-decoration: none; font-size: 12px;">Contact Us</a>
@@ -264,6 +274,7 @@ def display_footer():
     </div>
     """
     st.markdown(footer_html, unsafe_allow_html=True)
+
 
 
 
