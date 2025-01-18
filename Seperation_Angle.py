@@ -242,15 +242,13 @@ def display_footer():
                     <h1 style="color: #00008B; margin: 0;">Indian Pulsar Timing Array</h1>
                     <div style="margin: 10px 0; display: flex; align-items: center;">
                         <a href="https://inpta.iitr.ac.in/" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">Home</a>
-                        <a href="https://www.instagram.com/indian_pta/" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">Instagram</a>
                         <a href="https://www.researchgate.net/lab/Indian-Pulsar-Timing-Array-Bhal-CHANDRA-Joshi" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">ResearchGate</a>
-                        <a href="https://github.com/inpta" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">GitHub</a>
-                        <a href="https://x.com/i/flow/login?redirect_after_login=%2FInPTA_GW" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">X</a>
-                        <a href="https://www.facebook.com/indianpta/" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">Facebook</a>
-                    </div>
+                        <a href="https://inpta.iitr.ac.in/publications.html" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">Publications</a>
+                        <a href="https://inpta.iitr.ac.in/resources.html" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">Resource</a>
+                        </div>
                 </div>
             </div>
-            <div style="text-align: left; max-width: 50%; padding-left: 400px;">
+            <div style="text-align: left; max-width: 50%; padding-left: 440px;">
                 <p style="margin: 0; font-size: 12px; color: #000000; font-weight: bold;">
                     Indian Pulsar Timing Array
                 </p>
