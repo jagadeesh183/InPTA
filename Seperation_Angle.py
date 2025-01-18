@@ -91,7 +91,7 @@ def display_form():
         padding-left: 1.5rem; /* Adds left padding to align "Source" with one tab */
     }
     .source-header div {
-        flex: 1; /* Dynamically adjust width of columns */
+        flex: 2; /* Dynamically adjust width of columns */
         text-align: left; /* Align text to the left */
     }
     </style>
