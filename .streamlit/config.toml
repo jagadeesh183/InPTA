@@ -1,14 +1,5 @@
 [theme]
-base = "light"  # Default theme (use "dark" for dark mode)
-primaryColor = "#1E90FF"
-backgroundColor = "#FFFFFF"
-secondaryBackgroundColor = "#F0F2F6"
-textColor = "#000000"
-font = "sans serif"
-
-[ui]
-hideThemeSwitch = true  # Show the dark/light mode toggle
-hideStreamlitMark = true # Hide Streamlit watermark
+base = "light"
 
 [server]
 headless = true
@@ -18,3 +9,6 @@ gatherUsageStats = false
 
 [global]
 disableWatchdogWarning = true
+
+[ui]
+hideStreamlitMark = true
