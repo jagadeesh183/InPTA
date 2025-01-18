@@ -86,18 +86,10 @@ def display_form():
 
     # Display the header above the source list box
     st.markdown("**Source List Format**")
-    # st.markdown(
-    #     """
-    #     | **Source** | **RA**          | **DEC**           | **Epoch** | **Obs Duration** |
-    #     |------------|-----------------|-------------------|-----------|------------------|
-    #     """,
-    #     unsafe_allow_html=True,
-    # )
-    st.markdown("**Source**    \t**RA**    **DEC**    **Epoch**")
 
     # Text area for the source list
     srclist_data = st.text_area(
-        label="",
+        label="Source\t\tRA\t\tDec\t\tEpoch"",
         placeholder="Paste the contents of the source list here...",
         height=300,
         key="source_list",
