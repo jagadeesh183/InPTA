@@ -81,7 +81,7 @@ def display_form():
         font-size: 14px;
         font-weight: bold;
         margin-bottom: 0px; /* Removes extra space below headers */
-        gap: 1rem; /* Minimal spacing between columns to mimic a single tab */
+        gap: 0.1rem; /* Minimal spacing between columns to mimic a single tab */
         padding-left: 1rem; /* Adds left padding for "Source" */
     }
     .source-header div {
