@@ -77,7 +77,7 @@ def display_form():
     textarea {
         font-family: monospace !important;
         font-size: 14px !important;
-        line-height: 1.5 !important;
+        line-height: 1 !important;
         white-space: pre !important; /* Ensures spacing is maintained */
     }
     .source-header {
@@ -86,8 +86,8 @@ def display_form():
         font-family: monospace;
         font-size: 14px;
         font-weight: bold;
-        margin-bottom: 5px; /* Removes extra space */
-        gap: 5px; /* Reduces spacing between headers */
+        margin-bottom: 1px; /* Removes extra space */
+        gap: 15px; /* Reduces spacing between headers */
         padding-left: 1rem; /* Adds left padding to align "Source" with one tab */
     }
     .source-header div {
