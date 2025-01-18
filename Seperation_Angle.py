@@ -76,7 +76,7 @@ def display_header():
         **Key Features:**
         1. Generates overlap times for sources that fall within the specified angular separation threshold.
         2. Creates detailed plots of Separation Angle vs. Time for all sources, which can be clicked to download.
-        3. Provides a downloadable summary file (`summary.txt`) containing the results.
+        3. Provides a downloadable summary file ("summary.txt") containing the results.
 
         **Notes:**
         - A typical threshold for solar proximity is around 9 degrees for InPTA regular observations.
