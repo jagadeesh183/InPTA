@@ -77,7 +77,7 @@ def display_form():
     textarea {
         font-family: monospace !important;
         font-size: 14px !important;
-        line-height: 1.5 !important;
+        line-height: 0.5 !important;
         white-space: pre !important; /* Ensures spacing is maintained */
     }
     .source-header {
