@@ -120,7 +120,7 @@ def display_form():
     srclist_data = st.text_area(
         label="",
         placeholder="Paste the contents of the source list here...",
-        height=250,
+        height=200,
         key="source_list",
     )
 
