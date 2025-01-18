@@ -86,8 +86,11 @@ def display_form():
     .source-header div {
         text-align: left; /* Align text to the left */
     }
-    .textarea-container {
-        margin-top: 0; /* Removes spacing between header and text area */
+    textarea {
+        font-family: monospace !important; /* Ensures monospace font */
+        white-space: pre !important; /* Retains all spaces and formatting */
+        font-size: 14px; /* Ensures readable font size */
+        line-height: 1.5; /* Makes it more legible */
     }
     </style>
     """
@@ -109,7 +112,6 @@ def display_form():
     )
     
     # Text area for the source list
-    st.markdown('<div class="textarea-container">', unsafe_allow_html=True)
     srclist_data = st.text_area(
         label="",
         placeholder="Paste the contents of the source list here...",
