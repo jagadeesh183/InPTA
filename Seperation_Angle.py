@@ -76,7 +76,7 @@ def display_form():
     <style>
     .source-header {
         display: grid;
-        grid-template-columns: 125px 100px 100px 100px; /* Fixed-width columns */
+        grid-template-columns: 125px 125px 125px 125px; /* Fixed-width columns */
         font-family: monospace;
         font-size: 14px;
         font-weight: bold;
