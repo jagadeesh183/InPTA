@@ -250,6 +250,11 @@ def display_footer():
                     </div>
                 </div>
             </div>
+            <div style="text-align: right; max-width: 50%; padding-left: 20px;">
+                <p style="margin: 0; font-size: 14px; color: #000000;">
+                    Indian Pulsar Timing Array Experiment (InPTA) is an Indo-Japanese collaboration pulsar timing experiment searching for low frequency nanoHz Gravitational Waves in operation since 2016.
+                </p>
+            </div>
         </div>
         <div style="text-align: center; font-size: 12px; margin-top: 10px;">
             <p style="margin: 0;">Developed by <strong>S Jagadeesh</strong> & <strong>Shaswata Chowdhury</strong></p>
@@ -258,6 +263,7 @@ def display_footer():
     </div>
     """
     st.markdown(footer_html, unsafe_allow_html=True)
+
 
 
 # Main App
