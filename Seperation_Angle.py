@@ -81,10 +81,15 @@ def display_form():
         font-size: 14px;
         font-weight: bold;
         margin-bottom: 0px; /* Removes extra space below headers */
+        margin: 0;
+        pading:0;
         padding-left: 1rem; /* Adds left padding for "Source" */
     }
     .source-header div {
         text-align: left; /* Align text to the left */
+    }
+    .stTextArea {
+        margin-top: -10px !important; /* Removes extra space between header and textarea */
     }
     textarea {
         font-family: monospace !important; /* Ensures monospace font */
