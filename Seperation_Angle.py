@@ -85,10 +85,19 @@ def display_form():
         padding-left: 1rem; /* Adds left padding to align "Source" */
     }
     .source-header div {
-        flex: 0.5; /* Equal width for columns */
+        flex: 1; /* Equal width for columns */
         text-align: left; /* Align text to the left */
     }
     .source-header div:first-child {
+        flex: 0.5; /* Make the "Source" column wider */
+    }
+    .source-header div:second-child {
+        flex: 0.5; /* Make the "Source" column wider */
+    }
+    .source-header div:third-child {
+        flex: 0.5; /* Make the "Source" column wider */
+    }
+    .source-header div:fourth-child {
         flex: 0.5; /* Make the "Source" column wider */
     }
     </style>
