@@ -43,7 +43,6 @@ OUTPUT_DIR = os.path.join(BASE_DIR, "output_final")
 SRCLIST_FILE = os.path.join(BASE_DIR, "Srclist.txt")
 OBSRV_COORD_FILE = os.path.join(BASE_DIR, "ObservatoryCoord.txt")
 
-# Initialize session state
 if "output_folder" not in st.session_state:
     st.session_state["output_folder"] = None
 if "generated_files" not in st.session_state:
@@ -67,6 +66,7 @@ def display_header():
     </div>
     """
     st.markdown(header_html, unsafe_allow_html=True)
+    
     # Description below header
     st.markdown(
         """
@@ -92,12 +92,7 @@ def display_header():
         unsafe_allow_html=True,
     )
 
-
-
 def display_form():
-    #st.text("This tool evaluates the solar proximity of sources observed using the uGMRT. It identifies whether any sources -- both target and phasing -- are within a specified angular separation threshold from the Sun during the entire observation session.")
-
-    # Add custom CSS for monospace font in the text area
     custom_css = """
     <style>
     .source-header {
@@ -125,11 +120,9 @@ def display_form():
     }
     </style>
     """
-    
-    # Apply custom CSS
+
     st.markdown(custom_css, unsafe_allow_html=True)
     
-    # Render the header with minimal spacing
     st.markdown(
         """
         <div class="source-header">
@@ -142,22 +135,12 @@ def display_form():
         unsafe_allow_html=True,
     )
     
-    # Text area for the source list
     srclist_data = st.text_area(
         label="",
         placeholder="Paste the contents of the source list here...",
         height=200,
         key="source_list",
     )
-
-
-# Updated text area
-    # srclist_data = st.text_area(
-    #     "Paste Source List",
-    #     placeholder=f"{source_list_headings}Paste the contents of Source List here...",
-    #     height=300  # Optional: Adjust height as needed
-    # )
-
 
     if srclist_data.strip():
         with open(SRCLIST_FILE, "w") as file:
@@ -170,8 +153,6 @@ def display_form():
     threshold_angle = st.number_input("Threshold Separation Angle (degrees)", min_value=0.0, step=0.1)
     observatory_name = st.selectbox("Select Observatory", ["Please select your obs name", "uGMRT"])
     
-    
-
     if st.button("Submit"):
         if srclist_data.strip() and observatory_name:
             with st.spinner("Processing..."):
@@ -193,7 +174,6 @@ def display_form():
                     observatory_name,
                 )
     
-                # Update session state for summary contents and generated files
                 with open(summary_file, "r") as file:
                     st.session_state["summary_contents"] = file.read()
     
@@ -207,10 +187,6 @@ def display_form():
     if "summary_contents" in st.session_state:
         st.subheader("Summary File Contents:")
         st.code(st.session_state["summary_contents"], language="text")
-    #else:
-        #st.warning("No summary file available. Please submit the form.")
-
-
 
 def display_pdfs():
     if st.session_state["output_folder"] and st.session_state["generated_files"]:
@@ -226,8 +202,6 @@ def display_pdfs():
                 file_name=filename,
                 mime="application/octet-stream",
             )
-   # else:
-        #st.info("No files available for download. Please submit the form to generate files.")
 
 def display_footer():
     with open("download.jpeg", "rb") as footer_file:
@@ -280,15 +254,8 @@ def display_footer():
             <a href="mailto:shaswataphyres@gmail.com" style="color: blue; text-decoration: none; font-size: 12px;">Contact Us</a>
         </div>
     </div>
-
-
-
     """
     st.markdown(footer_html, unsafe_allow_html=True)
-
-
-
-
 
 # Main App
 if __name__ == "__main__":
