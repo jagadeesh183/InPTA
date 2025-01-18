@@ -85,7 +85,7 @@ def display_form():
         padding-left: 1rem; /* Adds left padding to align "Source" */
     }
     .source-header div {
-        flex: 1; /* Equal width for columns */
+        flex: 0.5; /* Equal width for columns */
         text-align: left; /* Align text to the left */
     }
     .source-header div:first-child {
