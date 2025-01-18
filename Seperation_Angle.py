@@ -14,6 +14,15 @@ st.set_page_config(
     page_icon=f"data:image/jpeg;base64,{base64_icon}",
     layout="wide"
 )
+zoom_style = """
+    <style>
+    .stApp {
+        transform: scale(0.75); /* Adjust scale to 75% */
+        transform-origin: top left; /* Scale from the top left corner */
+    }
+    </style>
+"""
+st.markdown(zoom_style, unsafe_allow_html=True)
 
 hide_st_style = """
     <style>
