@@ -62,7 +62,7 @@ def display_header():
             <img src="data:image/png;base64,{encoded_logo}" alt="InPTA Logo" style="width: 100px; height: auto; position: absolute; top: 20px; left: 20px; z-index: 100;">
         </a>
         <div style="margin-top: 80px;">
-            <img src="data:image/jpeg;base64,{encoded_header}" alt="Header Image" style="width: 100%; height: auto;">
+            <img src="data:image/jpeg;base64,{encoded_header}" alt="Header Image" style="width: 100%; height: 200px;">
         </div>
     </div>
     """
