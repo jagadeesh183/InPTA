@@ -96,7 +96,7 @@ def display_form():
 
     # Text area for the source list
     srclist_data = st.text_area(
-        label="Source            RA            DEC            Epoch",
+        label="Source \tRA \tDEC \tEpoch",
         placeholder="Paste the contents of the source list here...",
         height=300,
         key="source_list",
