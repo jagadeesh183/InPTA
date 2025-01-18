@@ -234,37 +234,28 @@ def display_footer():
         encoded_footer = base64.b64encode(footer_file.read()).decode()
 
     footer_html = f"""
-        <div style="background-color: #181818; color: white; padding: 20px; font-family: Arial, sans-serif; width: 100%; z-index: 1000;">
-        <div style="display: flex; justify-content: space-between; align-items: flex-start; width: 100%;">
-            
-            <!-- Left Section -->
-            <div style="flex: 1;">
-                <h1 style="color: #17a2b8; font-size: 24px; margin-bottom: 10px;">Indian Pulsar Timing Array</h1>
-                <p style="margin: 0; font-size: 14px; line-height: 1.6; max-width: 400px;">
-                    Indian Pulsar Timing Array Experiment (InPTA) is an Indo-Japanese collaboration pulsar timing experiment searching for low frequency nanoHz Gravitational Waves in operation since 2016.
-                </p>
-                <p style="margin-top: 20px; font-size: 12px; color: #a1a1a1;">&copy; 2023 Indian Pulsar Timing Array, All rights reserved</p>
-            </div>
-    
-            <!-- Center Section -->
-            <div style="flex: 1; text-align: center;">
-                <p style="margin: 0; font-size: 14px; font-weight: bold;">Home | Research | Publications | Resources | Calendar</p>
-            </div>
-    
-            <!-- Right Section -->
-            <div style="flex: 1; text-align: right;">
-                <div style="display: flex; justify-content: flex-end; gap: 15px; margin-bottom: 10px;">
-                    <a href="https://www.facebook.com/indianpta/" target="_blank" style="color: white; font-size: 18px; text-decoration: none;">&#xf09a;</a>
-                    <a href="https://x.com/i/flow/login?redirect_after_login=%2FInPTA_GW" target="_blank" style="color: white; font-size: 18px; text-decoration: none;">&#xf099;</a>
-                    <a href="https://github.com/inpta" target="_blank" style="color: white; font-size: 18px; text-decoration: none;">&#xf09b;</a>
-                    <a href="https://www.instagram.com/indian_pta/" target="_blank" style="color: white; font-size: 18px; text-decoration: none;">&#xf16d;</a>
-                    <a href="https://www.researchgate.net/lab/Indian-Pulsar-Timing-Array-Bhal-CHANDRA-Joshi" target="_blank" style="color: white; font-size: 18px; text-decoration: none;">&#xf1a0;</a>
+    <div style="background-color: #f0f0f0; color: black; padding: 20px; font-family: Arial, sans-serif; bottom: 0; left: 0; width: 100%; z-index: 1000;">
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 100%;">
+            <div style="display: flex; align-items: center;">
+                <img src="data:image/jpeg;base64,{encoded_footer}" alt="Footer Logo" style="width: 70px; height: 70; margin-right: 15px;">
+                <div>
+                    <h1 style="color: #00008B; margin: 0;">Indian Pulsar Timing Array</h1>
+                    <div style="margin: 10px 0; display: flex; align-items: center;">
+                        <a href="https://inpta.iitr.ac.in/" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">Home</a>
+                        <a href="https://www.instagram.com/indian_pta/" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">Instagram</a>
+                        <a href="https://www.researchgate.net/lab/Indian-Pulsar-Timing-Array-Bhal-CHANDRA-Joshi" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">ResearchGate</a>
+                        <a href="https://github.com/inpta" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">GitHub</a>
+                        <a href="https://x.com/i/flow/login?redirect_after_login=%2FInPTA_GW" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">X</a>
+                        <a href="https://www.facebook.com/indianpta/" target="_blank" style="color: black; text-decoration: none; margin-right: 15px;">Facebook</a>
+                    </div>
                 </div>
-                <p style="margin: 0; font-size: 12px;">Developed by <strong>Vanshaj Kerni</strong> & <strong>Fazal Kareem</strong></p>
             </div>
         </div>
+        <div style="text-align: center; font-size: 12px; margin-top: 10px;">
+            <p style="margin: 0;">Developed by <strong>S Jagadeesh</strong> & <strong>Shaswata Chowdhury</strong></p>
+            <a href="mailto:shaswataphyres@gmail.com" style="color: blue; text-decoration: none; font-size: 12px;">Contact Us</a>
+        </div>
     </div>
-
     """
     st.markdown(footer_html, unsafe_allow_html=True)
 
