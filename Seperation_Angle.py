@@ -261,7 +261,7 @@ def display_footer():
             <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" style="width: 24px; height: 24px;">
         </a>
         <a href="https://x.com/InPTA_GW" target="_blank" style="text-decoration: none;">
-            <img src="https://avatars.githubusercontent.com/u/50278?s=200&v=4" alt="Twitter" style="width: 24px; height: 24px;">
+            <img src="https://www.pinterest.com/pin/831828993650016715/" alt="Twitter" style="width: 24px; height: 24px;">
         </a>
         <a href="https://github.com/inpta" target="_blank" style="text-decoration: none;">
             <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub" style="width: 24px; height: 24px;">
