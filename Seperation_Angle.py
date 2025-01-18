@@ -93,10 +93,11 @@ def display_form():
     #     """,
     #     unsafe_allow_html=True,
     # )
+    st.markdown("**Source**    **RA**    **DEC**    **Epoch**")
 
     # Text area for the source list
     srclist_data = st.text_area(
-        label="Source \tRA \tDEC \tEpoch",
+        label="",
         placeholder="Paste the contents of the source list here...",
         height=300,
         key="source_list",
