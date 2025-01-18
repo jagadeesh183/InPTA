@@ -67,6 +67,53 @@ def display_header():
     </div>
     """
     st.markdown(header_html, unsafe_allow_html=True)
+    # Description below header
+    st.markdown(
+        """
+        ### Solar Proximity Prediction over the uGMRT Antennas
+        This tool evaluates the solar proximity of sources observed using the uGMRT. It identifies whether any sources — both target and phasing — are within a specified angular separation threshold from the Sun during the entire observation session.
+
+        **Key Features:**
+        1. Generates overlap times for sources that fall within the specified angular separation threshold.
+        2. Creates detailed plots of Separation Angle vs. Time for all sources, which can be clicked to download.
+        3. Provides a downloadable summary file (`summary.txt`) containing the results.
+
+        **Notes:**
+        - A typical threshold for solar proximity is around 9 degrees for InPTA regular observations.
+        - To use this tool, paste the source list from your observation command file. The required columns are Source Name, RA, DEC, Epoch. If other columns are missing, the tool can still function.
+        - Currently, this tool supports only sources observed from the uGMRT.
+        """,
+        unsafe_allow_html=True,
+    )
+
+def display_view_settings():
+    st.sidebar.markdown("### Settings")
+    view_mode = st.sidebar.radio("Choose View Mode", options=["Wide", "Narrow"], index=0)
+    theme_mode = st.sidebar.radio("Choose Theme", options=["Light", "Dark"], index=0)
+
+    # Adjust layout and theme
+    if view_mode == "Wide":
+        st.set_page_config(layout="wide")
+    else:
+        st.set_page_config(layout="centered")
+
+    custom_css = """
+    <style>
+        body {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+        }
+    </style>
+    """ if theme_mode == "Light" else """
+    <style>
+        body {
+            background-color: #1e1e1e !important;
+            color: #ffffff !important;
+        }
+    </style>
+    """
+    st.markdown(custom_css, unsafe_allow_html=True)
+
 
 def display_form():
     st.text("This tool evaluates the solar proximity of sources observed using the uGMRT. It identifies whether any sources -- both target and phasing -- are within a specified angular separation threshold from the Sun during the entire observation session.")
@@ -235,6 +282,7 @@ def display_footer():
 
 # Main App
 if __name__ == "__main__":
+    display_view_settings()
     display_header()
     display_form()
     display_pdfs()
