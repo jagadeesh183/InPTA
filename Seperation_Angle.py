@@ -81,41 +81,43 @@ def display_form():
         font-size: 14px;
         font-weight: bold;
         margin-bottom: 0px; /* Removes extra space below headers */
-        gap: 10px; /* Uniformly reduces spacing between all columns */
-        padding-left: 1rem; /* Adds left padding to align "Source" */
+        gap: 1rem; /* Minimal spacing between columns to mimic a single tab */
+        padding-left: 1rem; /* Adds left padding for "Source" */
     }
     .source-header div {
         flex: 1; /* Equal width for all columns */
         text-align: left; /* Align text to the left */
     }
     .source-header div:nth-child(1) {
-        flex: 0.5; /* Slightly larger width for "Source" */
+        flex: 0.8; /* Slightly larger width for "Source" */
     }
     </style>
 """
 
-    st.markdown(custom_css, unsafe_allow_html=True)
+# Apply custom CSS
+st.markdown(custom_css, unsafe_allow_html=True)
 
-    # Render the header
-    st.markdown(
-        """
-        <div class="source-header">
-            <div>Source</div>
-            <div>RA</div>
-            <div>Dec</div>
-            <div>Epoch</div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+# Render the header with minimal spacing
+st.markdown(
+    """
+    <div class="source-header">
+        <div>Source</div>
+        <div>RA</div>
+        <div>Dec</div>
+        <div>Epoch</div>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
 
-    # Text area for the source list
-    srclist_data = st.text_area(
-        label="",
-        placeholder="Paste the contents of the source list here...",
-        height=250,
-        key="source_list",
-    )
+# Text area for the source list
+srclist_data = st.text_area(
+    label="",
+    placeholder="Paste the contents of the source list here...",
+    height=250,
+    key="source_list",
+)
+
 # Updated text area
     # srclist_data = st.text_area(
     #     "Paste Source List",
