@@ -69,7 +69,7 @@ def display_header():
     st.markdown(header_html, unsafe_allow_html=True)
 
 def display_form():
-    #st.title("Observatory Data Input")
+    st.text("This tool evaluates the solar proximity of sources observed using the uGMRT. It identifies whether any sources -- both target and phasing -- are within a specified angular separation threshold from the Sun during the entire observation session.")
 
     # Add custom CSS for monospace font in the text area
     custom_css = """
