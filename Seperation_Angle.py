@@ -162,7 +162,7 @@ def display_form():
                     file.write(f"Observatory Name: {observatory_name} \n")
                     file.write(f"Start Time: {start_time_ist} \n")
                     file.write(f"Observation Duration: {observation_duration} \n")
-    
+                print("Before calling main()")
                 main(
                     OBSRV_COORD_FILE,
                     OUTPUT_DIR,
@@ -173,6 +173,7 @@ def display_form():
                     threshold_angle,
                     observatory_name,
                 )
+                print("a calling main()")
     
                 with open(summary_file, "r") as file:
                     st.session_state["summary_contents"] = file.read()
