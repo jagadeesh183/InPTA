@@ -169,6 +169,8 @@ def display_form():
     observation_duration = st.number_input("Observation Duration (in hours)", min_value=0.0, step=0.1)
     threshold_angle = st.number_input("Threshold Separation Angle (degrees)", min_value=0.0, step=0.1)
     observatory_name = st.selectbox("Select Observatory", ["Please select your obs name", "uGMRT"])
+    if observatory_name=="uGMRT":
+        observatory_name=GMRT
     
     
 
