@@ -100,10 +100,7 @@ def plot_separation_angle(times, output_folder, separation_angles, targetname, t
     # Add 5 hours and 30 minutes to convert to IST
     times_ist = times + timedelta(hours=5, minutes=30)
 
-    # Extract the first date in DD-MM-YYYY format
-    first_date_ist = times_ist.dt.strftime('%d-%m-%Y').iloc[0]
-
-    
+       
     #print(f"times = {times}")
     #print(f"times[0] = {times[0]}")
     
@@ -133,7 +130,7 @@ def plot_separation_angle(times, output_folder, separation_angles, targetname, t
     #print(f"times = {times}")
     #print(f"length of times = {len(times)}")
     #ax.set(xlabel='Time (UTC)', ylabel='Separation Angle (degrees)', title=f'Sun-Pulsar Separation Angle Timeseries - {targetname}')
-    ax.set(xlabel='Time (IST)', ylabel='Separation Angle (degrees)', title=f'Sun-Pulsar Separation Angle Timeseries - {targetname} [{first_date_ist}]')
+    ax.set(xlabel='Time (IST)', ylabel='Separation Angle (degrees)', title=f'Sun-Pulsar Separation Angle Timeseries - {targetname}')
     
     # Set x-axis major locator to hourly intervals and formatter
     ax.xaxis.set_major_locator(mdates.HourLocator(interval=1))  # Ticks every 1 hour
