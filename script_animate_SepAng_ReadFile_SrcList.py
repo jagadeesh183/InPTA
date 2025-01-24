@@ -134,7 +134,7 @@ def plot_separation_angle(times, output_folder, separation_angles, targetname, t
     
     # Set x-axis major locator to hourly intervals and formatter
     ax.xaxis.set_major_locator(mdates.HourLocator(interval=1))  # Ticks every 1 hour
-    ax.xaxis.set_major_formatter(mdates.DateFormatter('%H-%M'))  # Format as Hour-Minute
+    ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M'))  # Format as Hour-Minute
     
     # Use MaxNLocator to limit the number of ticks
     ax.xaxis.set_major_locator(MaxNLocator(nbins=9))  # Limit the number of ticks to a reasonable value
