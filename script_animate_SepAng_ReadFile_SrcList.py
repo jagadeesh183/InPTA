@@ -100,7 +100,6 @@ def plot_separation_angle(times, output_folder, separation_angles, targetname, t
     # Add 5 hours and 30 minutes to convert to IST
     times_ist = times + timedelta(hours=5, minutes=30)
 
-       
     #print(f"times = {times}")
     #print(f"times[0] = {times[0]}")
     
