@@ -278,7 +278,7 @@ def prompt_for_sepangthreshold():
         except ValueError as e:
             print(f"Invalid threshold: {e}. Please enter a valid threshold (degrees).")
 
-def labeling(datepart, timepart):
+def labeling(date_part, time_part):
     # Parse the date string into a datetime object
     date_object = datetime.strptime(date_part, "%Y-%m-%d")
     
