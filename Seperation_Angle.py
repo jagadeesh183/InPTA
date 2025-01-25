@@ -188,7 +188,7 @@ def display_form():
                 align-items: center;
                 gap: 3px; /* Minimal spacing between dropdowns */
                 margin-top: -15px; /* Removes extra top margin */
-                margin-bottom: 20px; /* Minimal spacing below */
+                margin-bottom: 15px; /* Minimal spacing below */
             }
             .time-picker-label {
                 font-family: Arial, sans-serif;
