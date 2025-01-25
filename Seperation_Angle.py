@@ -14,7 +14,40 @@ st.set_page_config(
     page_icon=f"data:image/jpeg;base64,{base64_icon}",
     layout="wide"
 )
+development_mode_css = """
+    <style>
+    .development-banner {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #ffcc00; /* Bright yellow for visibility */
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        padding: 10px;
+        z-index: 1000; /* Ensure it stays on top */
+        border-bottom: 2px solid red;
+    }
+    .stApp {
+        margin-top: 50px; /* Push content down to make space for the banner */
+    }
+    </style>
+"""
 
+# Insert the banner HTML if the page is under development
+is_under_development = True  # Toggle this to False to remove the banner
+
+if is_under_development:
+    st.markdown(development_mode_css, unsafe_allow_html=True)
+    st.markdown(
+        """
+        <div class="development-banner">
+            🚧 This application is currently under development or maintenance. Some features might not work as expected. 🚧
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 hide_st_style = """
     <style>
     #MainMenu {visibility: hidden;} /* Hides the main Streamlit menu */
