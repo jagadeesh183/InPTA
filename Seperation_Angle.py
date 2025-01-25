@@ -182,85 +182,47 @@ def display_form():
     st.markdown(
         """
         <style>
-            .time-picker-wrapper {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                gap: 3px; /* Minimal spacing between dropdowns */
-                margin-top: -15px; /* Removes extra top margin */
-                margin-bottom: 10px; /* Minimal spacing below */
-            }
-            .time-picker-label {
-                font-family: Arial, sans-serif;
-                font-size: 14px;
-                font-weight: normal; /* No bold text */
-                margin-right: 10px; /* Spacing between label and dropdowns */
-                color: #333; /* Softer color for label */
-            }
-            .time-picker-select {
+        .time-picker-select {
             font-family: Arial, sans-serif;
             font-size: 14px;
-            padding: 4px; /* Add some padding for consistency */
-            border: 1px solid #d1d1d1; /* Same border color as other input boxes */
-            border-radius: 4px; /* Consistent rounded corners */
-            background-color: #f9f9f9; /* Matches the other input boxes */
-            width: 50px; /* Adjust width for uniformity */
+            padding: 4px;
+            border: 1px solid #d1d1d1;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            width: 60px;
             text-align: center;
-            appearance: none; /* Removes default browser styles */
+            appearance: none;
         }
         .time-picker-select:focus {
             outline: none;
-            border-color: #85b7d9; /* Add focus border color to match Streamlit's theme */
-            box-shadow: 0 0 4px rgba(133, 183, 217, 0.5); /* Add subtle glow on focus *
-            }
+            border-color: #85b7d9;
+            box-shadow: 0 0 4px rgba(133, 183, 217, 0.5);
+        }
         </style>
         """,
         unsafe_allow_html=True,
     )
 
-    # Render the time picker
-    st.markdown(
-        """
-        <div class="time-picker-wrapper">
-            <span class="time-picker-label">Select Observation Start Time in IST (HH:MM:SS):</span>
-            <select id="hour" class="time-picker-select" onchange="updateTime()">
-                """ +
-                "".join([f'<option value="{i:02d}">{i:02d}</option>' for i in range(24)]) +
-                """
-            </select>
-            :
-            <select id="minute" class="time-picker-select" onchange="updateTime()">
-                """ +
-                "".join([f'<option value="{i:02d}">{i:02d}</option>' for i in range(60)]) +
-                """
-            </select>
-            :
-            <select id="second" class="time-picker-select" onchange="updateTime()">
-                """ +
-                "".join([f'<option value="{i:02d}">{i:02d}</option>' for i in range(60)]) +
-                """
-            </select>
-        </div>
-        <script>
-            function updateTime() {
-                const hour = document.getElementById('hour').value;
-                const minute = document.getElementById('minute').value;
-                const second = document.getElementById('second').value;
-                const streamlitMessage = new CustomEvent("streamlit:setComponentValue", {
-                    detail: { value: `${hour}:${minute}:${second}` }
-                });
-                window.dispatchEvent(streamlitMessage);
-            }
-        </script>
-        """,
-        unsafe_allow_html=True,
-    )
-    # Initialize session state for time value
-    if "time_value" not in st.session_state:
-        st.session_state["time_value"] = "00:00:00"  # Default to midnight
+    observation_date = st.date_input("Observation Date in IST (YYYY/DD/MM)")
 
-    # Retrieve the selected time or set a default value
-    observation_start_time = st.session_state["time_value"]
+    st.markdown("Select Observation Start Time:")
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        hour = st.selectbox(
+            "Hour", options=list(range(24)), format_func=lambda x: f"{x:02d}", key="hour"
+        )
+    with col2:
+        minute = st.selectbox(
+            "Minute", options=list(range(60)), format_func=lambda x: f"{x:02d}", key="minute"
+        )
+    with col3:
+        second = st.selectbox(
+            "Second", options=list(range(60)), format_func=lambda x: f"{x:02d}", key="second"
+        )
+
+    observation_start_time = f"{hour:02d}:{minute:02d}:{second:02d}"
+    st.write("Selected Observation Start Time:", observation_start_time)
     #observation_start_time = st.text_input("Observation Start Time in IST (HH:MM:SS)", placeholder="HH:MM:SS")
     start_time_ist = f"{observation_date} {observation_start_time}"
     observation_duration = st.number_input("Observation Duration (in hours)", min_value=0.0, step=0.1)
