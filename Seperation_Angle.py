@@ -150,7 +150,7 @@ def display_form():
     if uploaded_file:
         srclist_data = uploaded_file.read().decode("utf-8")
         st.text_area(
-            label="Source List (Preview from Uploaded File)",
+            label="",
             value=srclist_data,
             height=200,
             key="source_list_preview",
