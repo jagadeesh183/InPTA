@@ -176,7 +176,9 @@ def display_form():
     if st.button("Submit"):
         if srclist_data.strip() and observatory_name:
             with st.spinner("Processing may take some time please wait (2-3 mins)..."):
-                filename_label = labeling(observation_date.strftime('%Y-%m-%d'), observation_start_time)
+                filename_label = labeling(
+                    observation_date.strftime('%Y-%m-%d'), observation_start_time
+                )
                 create_or_clear_directory(OUTPUT_DIR, filename_label)
                 summary_file = os.path.join(OUTPUT_DIR, f"summary_{filename_label}.txt")
                 with open(summary_file, 'a') as file:
