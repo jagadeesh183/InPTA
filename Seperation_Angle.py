@@ -5,7 +5,6 @@ import os
 import base64
 
 
-# Set the favicon and layout
 with open("download.jpeg", "rb") as image_file:
     base64_icon = base64.b64encode(image_file.read()).decode()
 
@@ -35,7 +34,7 @@ development_mode_css = """
     </style>
 """
 
-# Insert the banner HTML if the page is under development
+# banner if the page is under development
 is_under_development = True  # Toggle this to False to remove the banner
 
 if is_under_development:
@@ -129,9 +128,6 @@ def display_header():
 
 
 def display_form():
-    #st.text("This tool evaluates the solar proximity of sources observed using the uGMRT. It identifies whether any sources -- both target and phasing -- are within a specified angular separation threshold from the Sun during the entire observation session.")
-
-    # Add custom CSS for monospace font in the text area
     custom_css = """
     <style>
     .source-header {
@@ -159,11 +155,7 @@ def display_form():
     }
     </style>
     """
-    
-    # Apply custom CSS
     st.markdown(custom_css, unsafe_allow_html=True)
-    
-    # Render the header with minimal spacing
     uploaded_file = st.file_uploader(
         "Upload a source list file (.txt)", type=["txt"], key="file_uploader"
     )
@@ -179,7 +171,6 @@ def display_form():
         unsafe_allow_html=True,
     )
 
-    
     srclist_data = ""
     if uploaded_file:
         srclist_data = uploaded_file.read().decode("utf-8")
@@ -189,7 +180,6 @@ def display_form():
             height=200,
             key="source_list_preview",
         )
-    # Text area for the source list
     else:
         srclist_data = st.text_area(
             label="",
@@ -197,15 +187,6 @@ def display_form():
             height=200,
             key="source_list",
         )
-
-
-# Updated text area
-    # srclist_data = st.text_area(
-    #     "Paste Source List",
-    #     placeholder=f"{source_list_headings}Paste the contents of Source List here...",
-    #     height=300  # Optional: Adjust height as needed
-    # )
-
 
     if srclist_data.strip():
         with open(SRCLIST_FILE, "w") as file:
@@ -243,7 +224,7 @@ def display_form():
     """,
     unsafe_allow_html=True,
 )
-    st.markdown('<label class="time-picker-label">Select Observation Start Time in IST(HH:MM:SS):</label>', unsafe_allow_html=True)
+    st.markdown('<label class="time-picker-label">Select Observation Start Time in IST (HH:MM:SS):</label>', unsafe_allow_html=True)
     # Dropdowns for hour, minute, and second
     col1, col2, col3 = st.columns(3)
     
@@ -259,24 +240,14 @@ def display_form():
         second = st.selectbox(
             "Second", options=list(range(60)), format_func=lambda x: f"{x:02d}", key="second"
         )
-    
-    # Construct the selected time
     observation_start_time = f"{hour:02d}:{minute:02d}:{second:02d}"
-    
-    # Debugging output to check selected time
-    #st.write("Selected Observation Start Time:", observation_start_time)
-    # Initialize session state
     st.write(f"Selected Observation Start Time: {observation_start_time}")
-
     start_time_ist = f"{observation_date} {observation_start_time}"
-    #st.write(f"Combined Date & Time: {start_time_ist}")
     observation_duration = st.number_input("Observation Duration (in hours)", min_value=0.0, step=0.1)
     threshold_angle = st.number_input("Threshold Separation Angle (degrees)", min_value=0.0, step=0.1)
     observatory_name = st.selectbox("Select Observatory", ["Please select your obs name", "uGMRT"])
     observatory_name = "GMRT" if observatory_name == "uGMRT" else None
     
-    
-
     if st.button("Submit"):
         if srclist_data.strip() and observatory_name:
             with st.spinner("Processing may take some time please wait (2-3 mins)..."):
@@ -301,8 +272,6 @@ def display_form():
                     observatory_name,
                     filename_label
                 )
-    
-                # Update session state for summary contents and generated files
                 with open(summary_file, "r") as file:
                     st.session_state["summary_contents"] = file.read()
     
@@ -316,10 +285,6 @@ def display_form():
     if "summary_contents" in st.session_state:
         st.subheader("Summary File Contents:")
         st.code(st.session_state["summary_contents"], language="text")
-    #else:
-        #st.warning("No summary file available. Please submit the form.")
-
-
 
 def display_pdfs():
     if st.session_state["output_folder"] and st.session_state["generated_files"]:
@@ -335,8 +300,6 @@ def display_pdfs():
                 file_name=filename,
                 mime="application/octet-stream",
             )
-   # else:
-        #st.info("No files available for download. Please submit the form to generate files.")
 
 def display_footer():
     with open("download.jpeg", "rb") as footer_file:
@@ -389,15 +352,8 @@ def display_footer():
             <a href="mailto:shaswataphyres@gmail.com" style="color: blue; text-decoration: none; font-size: 12px;">Contact Us</a>
         </div>
     </div>
-
-
-
     """
     st.markdown(footer_html, unsafe_allow_html=True)
-
-
-
-
 
 # Main App
 if __name__ == "__main__":
