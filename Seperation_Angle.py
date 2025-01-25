@@ -186,29 +186,31 @@ def display_form():
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-                gap: 5px; /* Reduced spacing between dropdowns */
-                margin-top: 5px; /* Reduced top margin */
-                margin-bottom: 10px; /* Adjust spacing below */
+                gap: 3px; /* Minimal spacing between dropdowns */
+                margin-top: -10px; /* Removes extra top margin */
+                margin-bottom: 5px; /* Minimal spacing below */
             }
             .time-picker-label {
                 font-family: Arial, sans-serif;
-                font-size: 16px;
-                font-weight: bold;
-                margin-right: 10px; /* Adjust spacing between label and inputs */
+                font-size: 14px;
+                font-weight: normal; /* No bold text */
+                margin-right: 10px; /* Spacing between label and dropdowns */
+                color: #333; /* Softer color for label */
             }
             .time-picker-select {
                 font-family: Arial, sans-serif;
-                font-size: 14px; /* Slightly smaller font size */
-                padding: 3px; /* Adjust padding for a compact look */
-                border: 1px solid #4CAF50;
-                border-radius: 4px; /* Subtle rounded edges */
-                width: 50px; /* Smaller width for dropdowns */
+                font-size: 14px;
+                padding: 2px; /* Compact padding */
+                border: 1px solid #ccc;
+                border-radius: 4px; /* Rounded edges for dropdowns */
+                width: 45px; /* Small width for dropdowns */
                 text-align: center;
+                appearance: none; /* Ensures consistent styling */
             }
             .time-picker-select:focus {
                 outline: none;
-                border-color: #008CBA;
-                box-shadow: 0 0 5px rgba(0, 140, 186, 0.5);
+                border-color: #007BFF;
+                box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
             }
         </style>
         """,
@@ -219,21 +221,21 @@ def display_form():
     st.markdown(
         """
         <div class="time-picker-wrapper">
-            <span class="time-picker-label">Observation Start Time (24-hour format):</span>
+            <span class="time-picker-label">Select Observation Start Time:</span>
             <select id="hour" class="time-picker-select" onchange="updateTime()">
-                """ + 
+                """ +
                 "".join([f'<option value="{i:02d}">{i:02d}</option>' for i in range(24)]) +
                 """
             </select>
             :
             <select id="minute" class="time-picker-select" onchange="updateTime()">
-                """ + 
+                """ +
                 "".join([f'<option value="{i:02d}">{i:02d}</option>' for i in range(60)]) +
                 """
             </select>
             :
             <select id="second" class="time-picker-select" onchange="updateTime()">
-                """ + 
+                """ +
                 "".join([f'<option value="{i:02d}">{i:02d}</option>' for i in range(60)]) +
                 """
             </select>
@@ -252,7 +254,6 @@ def display_form():
         """,
         unsafe_allow_html=True,
     )
-
     # Initialize session state for time value
     if "time_value" not in st.session_state:
         st.session_state["time_value"] = "00:00:00"  # Default to midnight
