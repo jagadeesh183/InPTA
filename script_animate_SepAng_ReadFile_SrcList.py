@@ -351,7 +351,7 @@ def main(obsrv_coord_file, outputfolder, summary, src_list_file, start_time_ist,
                 file.write("----------------------------------------------------------------------------------------- \n")
                 file.write(f"{target_name}        {row[1]}        {row[2]} \n")
                 file.write("----------------------------------------------------------------------------------------- \n")
-                file.write("Source            Obs Time                     Separation Angle \n")
+                file.write("Source          Obs Time                   Separation Angle \n")
                 
                 for t, s in zip(times, sep_ang_series):
                     if s <= threshold:
