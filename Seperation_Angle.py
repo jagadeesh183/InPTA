@@ -177,7 +177,7 @@ def display_form():
         with open(SRCLIST_FILE, "w") as file:
             file.write(srclist_data)
 
-    observation_date = st.date_input("Observation Date in IST (YYYY/DD/MM)")
+    #observation_date = st.date_input("Observation Date in IST (YYYY/DD/MM)")
     ##
     st.markdown(
         """
