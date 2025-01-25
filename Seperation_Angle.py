@@ -182,41 +182,67 @@ def display_form():
     st.markdown(
         """
         <style>
-            .time-input-wrapper {
+            .time-picker-wrapper {
                 display: flex;
+                flex-direction: row;
                 align-items: center;
-                margin-top: 10px;
-                justify-content: flex-start; /* Align to the left */
+                gap: 10px;
+                margin-top: 20px;
             }
-
-            .time-input {
-                font-size: 16px;
+            .time-picker-label {
                 font-family: Arial, sans-serif;
+                font-size: 16px;
+                font-weight: bold;
+            }
+            .time-picker-select {
+                font-family: Arial, sans-serif;
+                font-size: 16px;
+                padding: 5px;
                 border: 2px solid #4CAF50;
                 border-radius: 5px;
-                padding: 8px 10px;
-                width: 150px;
+                width: 70px;
                 text-align: center;
-                background-color: #ffffff;
             }
-
-            .time-input:focus {
+            .time-picker-select:focus {
                 outline: none;
                 border-color: #008CBA;
                 box-shadow: 0 0 5px rgba(0, 140, 186, 0.5);
             }
         </style>
-        <div class="time-input-wrapper">
-            <label for="time" style="margin-right: 10px; font-size: 16px; font-family: Arial, sans-serif;">
-                Select Time (IST, 24-hour format):
-            </label>
-            <input type="time" id="time" class="time-input" step="1" value="00:00:00"
-                   onchange="updateTime(this.value)">
+        """,
+        unsafe_allow_html=True,
+    )
+
+    # Render the time picker
+    st.markdown(
+        """
+        <div class="time-picker-wrapper">
+            <span class="time-picker-label">Select Observation Start Time (24-hour format):</span>
+            <select id="hour" class="time-picker-select" onchange="updateTime()">
+                """ + 
+                "".join([f'<option value="{i:02d}">{i:02d}</option>' for i in range(24)]) +
+                """
+            </select>
+            :
+            <select id="minute" class="time-picker-select" onchange="updateTime()">
+                """ + 
+                "".join([f'<option value="{i:02d}">{i:02d}</option>' for i in range(60)]) +
+                """
+            </select>
+            :
+            <select id="second" class="time-picker-select" onchange="updateTime()">
+                """ + 
+                "".join([f'<option value="{i:02d}">{i:02d}</option>' for i in range(60)]) +
+                """
+            </select>
         </div>
         <script>
-            function updateTime(value) {
+            function updateTime() {
+                const hour = document.getElementById('hour').value;
+                const minute = document.getElementById('minute').value;
+                const second = document.getElementById('second').value;
                 const streamlitMessage = new CustomEvent("streamlit:setComponentValue", {
-                    detail: { value: value }
+                    detail: { value: `${hour}:${minute}:${second}` }
                 });
                 window.dispatchEvent(streamlitMessage);
             }
