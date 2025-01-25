@@ -286,7 +286,7 @@ def labeling(date_part, time_part):
     formatted_date = date_object.strftime("%d%b%Y")
     print(f"formatted date = {formatted_date}\n")  
     
-    timesplitpart = timepart.strip().split(":")
+    timesplitpart = time_part.strip().split(":")
     timesrg = timesplitpart[0]+timesplitpart[1]
     
     label = formatted_date + "_" + timesrg
