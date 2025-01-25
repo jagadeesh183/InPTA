@@ -197,7 +197,7 @@ def display_form():
                 padding: 8px 10px;
                 width: 150px;
                 text-align: center;
-                background-color: #ffffff; /* White background */
+                background-color: #ffffff;
             }
 
             .time-input:focus {
@@ -210,11 +210,11 @@ def display_form():
             <label for="time" style="margin-right: 10px; font-size: 16px; font-family: Arial, sans-serif;">
                 Select Time (IST, 24-hour format):
             </label>
-            <input type="time" id="time" class="time-input" onchange="updateTime(this.value)" step="1">
+            <input type="time" id="time" class="time-input" step="1" value="00:00:00"
+                   onchange="updateTime(this.value)">
         </div>
         <script>
             function updateTime(value) {
-                // Send the selected time to Streamlit via session state
                 const streamlitMessage = new CustomEvent("streamlit:setComponentValue", {
                     detail: { value: value }
                 });
@@ -225,15 +225,11 @@ def display_form():
         unsafe_allow_html=True,
     )
 
-    # Ensure default value exists for time input
+    # Initialize session state for time value
     if "time_value" not in st.session_state:
         st.session_state["time_value"] = "00:00:00"  # Default to midnight
 
-    # Display the value in Streamlit
-    if "time_value" not in st.session_state:
-        st.session_state["time_value"] = "00:00:00"  # Default to midnight
-
-    # Retrieve selected time or default
+    # Retrieve the selected time or set a default value
     observation_start_time = st.session_state["time_value"]
     #observation_start_time = st.text_input("Observation Start Time in IST (HH:MM:SS)", placeholder="HH:MM:SS")
     start_time_ist = f"{observation_date} {observation_start_time}"
