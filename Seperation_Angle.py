@@ -216,7 +216,13 @@ def display_form():
     st.markdown(
     """
     <style>
-    <label class="time-picker-label">Select Observation Start Time (HH:MM:SS):</label>
+        .time-picker-label {
+                font-family: Arial, sans-serif;
+                font-size: 14px;
+                font-weight: normal;
+                margin-bottom: 8px;
+                color: #333;
+            }
         .time-picker-select {
             font-family: Arial, sans-serif;
             font-size: 14px;
@@ -237,7 +243,7 @@ def display_form():
     """,
     unsafe_allow_html=True,
 )
-
+    st.markdown('<label class="time-picker-label">Select Observation Start Time in IST(HH:MM:SS):</label>', unsafe_allow_html=True)
     # Dropdowns for hour, minute, and second
     col1, col2, col3 = st.columns(3)
     
