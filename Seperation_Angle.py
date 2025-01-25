@@ -179,10 +179,55 @@ def display_form():
 
     observation_date = st.date_input("Observation Date in IST (YYYY/DD/MM)")
     ##
-    observation_start_time = st.time_input("Observation Start Time in IST", value=time(0, 0, 0))
-    
-    # Format time input as HH:MM:SS
-    observation_start_time = observation_start_time.strftime("%H:%M:%S")
+    st.markdown(
+        """
+        <style>
+            .time-input-wrapper {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 10px;
+            }
+
+            .time-input {
+                font-size: 16px;
+                font-family: Arial, sans-serif;
+                border: 2px solid #4CAF50;
+                border-radius: 5px;
+                padding: 8px 10px;
+                width: 150px;
+                text-align: center;
+            }
+
+            .time-input:focus {
+                outline: none;
+                border-color: #008CBA;
+                box-shadow: 0 0 5px rgba(0, 140, 186, 0.5);
+            }
+        </style>
+        <div class="time-input-wrapper">
+            <label for="time" style="margin-right: 10px; font-size: 16px; font-family: Arial, sans-serif;">Select Time (IST):</label>
+            <input type="time" id="time" class="time-input" onchange="updateTime(this.value)">
+        </div>
+        <script>
+            function updateTime(value) {
+                // Send the selected time to Streamlit via session state
+                const streamlitMessage = new CustomEvent("streamlit:setComponentValue", {
+                    detail: { value: value }
+                });
+                window.dispatchEvent(streamlitMessage);
+            }
+        </script>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    # Display the value in Streamlit
+    if "time_value" in st.session_state:
+        observation_start_time = st.session_state["time_value"]
+        st.write(f"Selected Observation Time: {observation_start_time}")
+    else:
+        st.write("Please select a time above.")
     #observation_start_time = st.text_input("Observation Start Time in IST (HH:MM:SS)", placeholder="HH:MM:SS")
     start_time_ist = f"{observation_date} {observation_start_time}"
     observation_duration = st.number_input("Observation Duration (in hours)", min_value=0.0, step=0.1)
