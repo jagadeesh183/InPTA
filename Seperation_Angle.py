@@ -187,8 +187,8 @@ def display_form():
                 flex-direction: row;
                 align-items: center;
                 gap: 3px; /* Minimal spacing between dropdowns */
-                margin-top: -10px; /* Removes extra top margin */
-                margin-bottom: 5px; /* Minimal spacing below */
+                margin-top: -20px; /* Removes extra top margin */
+                margin-bottom: 20px; /* Minimal spacing below */
             }
             .time-picker-label {
                 font-family: Arial, sans-serif;
@@ -222,7 +222,7 @@ def display_form():
     st.markdown(
         """
         <div class="time-picker-wrapper">
-            <span class="time-picker-label">Select Observation Start Time:</span>
+            <span class="time-picker-label">Select Observation Start Time in IST (HH:MM:SS):</span>
             <select id="hour" class="time-picker-select" onchange="updateTime()">
                 """ +
                 "".join([f'<option value="{i:02d}">{i:02d}</option>' for i in range(24)]) +
