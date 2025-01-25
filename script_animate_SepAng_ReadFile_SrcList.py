@@ -92,7 +92,7 @@ def get_positions(times, gmrt_location, RA, DEC):
     #return np.array(sun_positions), np.array(pulsar_positions)
      
 # Function to plot the separation angle as a function of time
-def plot_separation_angle(times, output_folder, separation_angles, targetname, threshold):
+def plot_separation_angle(times, output_folder, separation_angles, targetname, threshold, filename_label):
     
     # Convert times to datetime objects if they are not already in datetime format
     times = pd.to_datetime(times) #this time is in utc
@@ -295,7 +295,7 @@ def labeling(date_part, time_part):
     return label
 
         
-def main(obsrv_coord_file, outputfolder, summary, src_list_file, start_time_ist, obs_time, threshold, obsname):
+def main(obsrv_coord_file, outputfolder, summary, src_list_file, start_time_ist, obs_time, threshold, obsname, filename_label):
     
     end_time_ist = endtimecalc(start_time_ist, obs_time)
     # Convert start and end times from IST to UTC
@@ -344,7 +344,7 @@ def main(obsrv_coord_file, outputfolder, summary, src_list_file, start_time_ist,
                 sys.exit(1)
             
             # plot the separation angle timeseries
-            plot_separation_angle(times, outputfolder, sep_ang_series, target_name, threshold)
+            plot_separation_angle(times, outputfolder, sep_ang_series, target_name, threshold, filename_label)
             
             #writing to a text file
             with open(summary, 'a') as file:
