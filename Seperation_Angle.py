@@ -177,54 +177,8 @@ def display_form():
         with open(SRCLIST_FILE, "w") as file:
             file.write(srclist_data)
 
-    #observation_date = st.date_input("Observation Date in IST (YYYY/DD/MM)")
-    ##
     observation_date = st.date_input("Observation Date in IST (YYYY/DD/MM)")
-    st.markdown(
-        """
-        <style>
-        .time-picker-select {
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            padding: 4px;
-            border: 1px solid #d1d1d1;
-            border-radius: 4px;
-            background-color: #f9f9f9;
-            width: 60px;
-            text-align: center;
-            appearance: none;
-        }
-        .time-picker-select:focus {
-            outline: none;
-            border-color: #85b7d9;
-            box-shadow: 0 0 4px rgba(133, 183, 217, 0.5);
-        }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
-
-    #observation_date = st.date_input("Observation Date in IST (YYYY/DD/MM)")
-
-    st.markdown("Select Observation Start Time in IST (HH:MM:SS):")
-    col1, col2, col3 = st.columns(3)
-
-    with col1:
-        hour = st.selectbox(
-            "Hour", options=list(range(24)), format_func=lambda x: f"{x:02d}", key="hour"
-        )
-    with col2:
-        minute = st.selectbox(
-            "Minute", options=list(range(60)), format_func=lambda x: f"{x:02d}", key="minute"
-        )
-    with col3:
-        second = st.selectbox(
-            "Second", options=list(range(60)), format_func=lambda x: f"{x:02d}", key="second"
-        )
-
-    observation_start_time = f"{hour:02d}:{minute:02d}:{second:02d}"
-    st.write("Selected Observation Start Time:", observation_start_time)
-    #observation_start_time = st.text_input("Observation Start Time in IST (HH:MM:SS)", placeholder="HH:MM:SS")
+    observation_start_time = st.text_input("Observation Start Time in IST (HH:MM:SS)", placeholder="HH:MM:SS")
     start_time_ist = f"{observation_date} {observation_start_time}"
     observation_duration = st.number_input("Observation Duration (in hours)", min_value=0.0, step=0.1)
     threshold_angle = st.number_input("Threshold Separation Angle (degrees)", min_value=0.0, step=0.1)
