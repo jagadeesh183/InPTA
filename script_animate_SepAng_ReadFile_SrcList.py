@@ -13,7 +13,7 @@ from astropy.coordinates import get_sun, SkyCoord, EarthLocation, AltAz, Angle
 from datetime import datetime, timedelta
 import pandas as pd
 
-
+#
 def create_or_clear_directory(directory_path):
     if os.path.exists(directory_path):
         # If the directory exists, remove all its contents
