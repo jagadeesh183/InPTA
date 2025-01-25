@@ -32,7 +32,7 @@ def create_or_clear_directory(directory_path):
         os.makedirs(directory_path)
         
     #freshly opening the summary file
-    summaryfile = f'{directory_path}/summary.txt'
+    summaryfile = f'{directory_path}/summary_{filename_label}.txt'
     with open(summaryfile, 'w') as file:
         file.write(f"# This file contains the Summary of separtion angle between the sun and the sources during the observation time: \n") 
         file.write("----------------------------------------------------------------------------------------- \n \n")
@@ -146,7 +146,7 @@ def plot_separation_angle(times, output_folder, separation_angles, targetname, t
     plt.grid(True)
     plt.tight_layout()
     
-    figname = f"{output_folder}/{targetname}_separation_angle_vs_time.pdf"
+    figname = f"{output_folder}/{targetname}_SeparationAngle_vs_time_{filename_label}.pdf"
     #Save to file (pdf or jpeg)
     plt.savefig(figname, format='pdf')  # You can change the format here
     
@@ -277,7 +277,23 @@ def prompt_for_sepangthreshold():
             return SAthreshold
         except ValueError as e:
             print(f"Invalid threshold: {e}. Please enter a valid threshold (degrees).")
-        
+
+def labeling(datepart, timepart):
+    # Parse the date string into a datetime object
+    date_object = datetime.strptime(date_part, "%Y-%m-%d")
+    
+    # Format the date object into the desired string
+    formatted_date = date_object.strftime("%d%b%Y")
+    print(f"formatted date = {formatted_date}\n")  
+    
+    timesplitpart = timepart.strip().split(":")
+    timesrg = timesplitpart[0]+timesplitpart[1]
+    
+    label = formatted_date + "_" + timesrg
+    print (f"label : {label} \n")
+    
+    return label
+
         
 def main(obsrv_coord_file, outputfolder, summary, src_list_file, start_time_ist, obs_time, threshold, obsname):
     
@@ -358,13 +374,16 @@ if __name__ == "__main__":
     # Prompt for date and time separately
     date_part = prompt_for_date()
     time_part = prompt_for_time()
+
+    filename_label = labeling(date_part, time_part)
+    
     # Concatenate date and time
     start_time_ist = f"{date_part} {time_part}"
     print(f"start_time_ist: {start_time_ist}")
 
     #prompting user for obs time
     obstime = int(prompt_for_duration())  #complete observation duration for that epoch  
-    
+
     #files to be kept in sacrosanct locations
     obsrvcoordfile = "ObservatoryCoord.txt"    
     
