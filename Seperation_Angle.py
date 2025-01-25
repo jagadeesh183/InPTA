@@ -184,9 +184,9 @@ def display_form():
         <style>
             .time-input-wrapper {
                 display: flex;
-                justify-content: center;
                 align-items: center;
                 margin-top: 10px;
+                justify-content: flex-start; /* Align to the left */
             }
 
             .time-input {
@@ -197,6 +197,7 @@ def display_form():
                 padding: 8px 10px;
                 width: 150px;
                 text-align: center;
+                background-color: #ffffff; /* White background */
             }
 
             .time-input:focus {
@@ -206,8 +207,10 @@ def display_form():
             }
         </style>
         <div class="time-input-wrapper">
-            <label for="time" style="margin-right: 10px; font-size: 16px; font-family: Arial, sans-serif;">Select Time (IST):</label>
-            <input type="time" id="time" class="time-input" onchange="updateTime(this.value)">
+            <label for="time" style="margin-right: 10px; font-size: 16px; font-family: Arial, sans-serif;">
+                Select Time (IST, 24-hour format):
+            </label>
+            <input type="time" id="time" class="time-input" onchange="updateTime(this.value)" step="1">
         </div>
         <script>
             function updateTime(value) {
@@ -221,6 +224,10 @@ def display_form():
         """,
         unsafe_allow_html=True,
     )
+
+    # Ensure default value exists for time input
+    if "time_value" not in st.session_state:
+        st.session_state["time_value"] = "00:00:00"  # Default to midnight
 
     # Display the value in Streamlit
     if "time_value" not in st.session_state:
