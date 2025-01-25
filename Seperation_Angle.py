@@ -216,6 +216,7 @@ def display_form():
     st.markdown(
     """
     <style>
+    <label class="time-picker-label">Select Observation Start Time (HH:MM:SS):</label>
         .time-picker-select {
             font-family: Arial, sans-serif;
             font-size: 14px;
@@ -262,7 +263,7 @@ def display_form():
     st.write(f"Selected Observation Start Time: {observation_start_time}")
 
     start_time_ist = f"{observation_date} {observation_start_time}"
-    st.write(f"Combined Date & Time: {start_time_ist}")
+    #st.write(f"Combined Date & Time: {start_time_ist}")
     observation_duration = st.number_input("Observation Duration (in hours)", min_value=0.0, step=0.1)
     threshold_angle = st.number_input("Threshold Separation Angle (degrees)", min_value=0.0, step=0.1)
     observatory_name = st.selectbox("Select Observatory", ["Please select your obs name", "uGMRT"])
