@@ -141,14 +141,27 @@ def display_form():
         """,
         unsafe_allow_html=True,
     )
-    
-    # Text area for the source list
-    srclist_data = st.text_area(
-        label="",
-        placeholder="Paste the contents of the source list here...",
-        height=200,
-        key="source_list",
+
+    uploaded_file = st.file_uploader(
+        "Upload a source list file (.txt)", type=["txt"], key="file_uploader"
     )
+    srclist_data = ""
+    if uploaded_file:
+        srclist_data = uploaded_file.read().decode("utf-8")
+        st.text_area(
+            label="Source List (Preview from Uploaded File)",
+            value=srclist_data,
+            height=200,
+            key="source_list_preview",
+        )
+    # Text area for the source list
+    else:
+        srclist_data = st.text_area(
+            label="",
+            placeholder="Paste the contents of the source list here...",
+            height=200,
+            key="source_list",
+        )
 
 
 # Updated text area
