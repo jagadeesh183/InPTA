@@ -195,6 +195,7 @@ def display_form():
                     observation_duration,
                     threshold_angle,
                     observatory_name,
+                    filename_label
                 )
     
                 # Update session state for summary contents and generated files
