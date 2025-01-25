@@ -223,11 +223,11 @@ def display_form():
     )
 
     # Display the value in Streamlit
-    if "time_value" in st.session_state:
-        observation_start_time = st.session_state["time_value"]
-        st.write(f"Selected Observation Time: {observation_start_time}")
-    else:
-        st.write("Please select a time above.")
+    if "time_value" not in st.session_state:
+        st.session_state["time_value"] = "00:00:00"  # Default to midnight
+
+    # Retrieve selected time or default
+    observation_start_time = st.session_state["time_value"]
     #observation_start_time = st.text_input("Observation Start Time in IST (HH:MM:SS)", placeholder="HH:MM:SS")
     start_time_ist = f"{observation_date} {observation_start_time}"
     observation_duration = st.number_input("Observation Duration (in hours)", min_value=0.0, step=0.1)
