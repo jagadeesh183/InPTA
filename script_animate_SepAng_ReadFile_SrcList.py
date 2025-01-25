@@ -14,7 +14,7 @@ from datetime import datetime, timedelta
 import pandas as pd
 
 #
-def create_or_clear_directory(directory_path):
+def create_or_clear_directory(directory_path, filename_label):
     if os.path.exists(directory_path):
         # If the directory exists, remove all its contents
         for filename in os.listdir(directory_path):
@@ -404,7 +404,7 @@ if __name__ == "__main__":
     else:
         print("Output Folder does not exist.")
         
-    summary_file = create_or_clear_directory(outputfolder)
+    summary_file = create_or_clear_directory(outputfolder, filename_label)
     
     obs_name = "GMRT" # you might include this as well in the command-line argument in future when we deal with other observatories. Te obsrvcoord file and the script is already prepared to take account of this
     
