@@ -198,19 +198,20 @@ def display_form():
                 color: #333; /* Softer color for label */
             }
             .time-picker-select {
-                font-family: Arial, sans-serif;
-                font-size: 14px;
-                padding: 2px; /* Compact padding */
-                border: 1px solid #ccc;
-                border-radius: 4px; /* Rounded edges for dropdowns */
-                width: 45px; /* Small width for dropdowns */
-                text-align: center;
-                appearance: none; /* Ensures consistent styling */
-            }
-            .time-picker-select:focus {
-                outline: none;
-                border-color: #007BFF;
-                box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            padding: 4px; /* Add some padding for consistency */
+            border: 1px solid #d1d1d1; /* Same border color as other input boxes */
+            border-radius: 4px; /* Consistent rounded corners */
+            background-color: #f9f9f9; /* Matches the other input boxes */
+            width: 50px; /* Adjust width for uniformity */
+            text-align: center;
+            appearance: none; /* Removes default browser styles */
+        }
+        .time-picker-select:focus {
+            outline: none;
+            border-color: #85b7d9; /* Add focus border color to match Streamlit's theme */
+            box-shadow: 0 0 4px rgba(133, 183, 217, 0.5); /* Add subtle glow on focus *
             }
         </style>
         """,
