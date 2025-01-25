@@ -179,6 +179,7 @@ def display_form():
 
     #observation_date = st.date_input("Observation Date in IST (YYYY/DD/MM)")
     ##
+    observation_date = st.date_input("Observation Date in IST (YYYY/DD/MM)")
     st.markdown(
         """
         <style>
@@ -203,9 +204,9 @@ def display_form():
         unsafe_allow_html=True,
     )
 
-    observation_date = st.date_input("Observation Date in IST (YYYY/DD/MM)")
+    #observation_date = st.date_input("Observation Date in IST (YYYY/DD/MM)")
 
-    st.markdown("Select Observation Start Time:")
+    st.markdown("Select Observation Start Time in IST (HH:MM:SS):")
     col1, col2, col3 = st.columns(3)
 
     with col1:
