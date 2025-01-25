@@ -186,21 +186,23 @@ def display_form():
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-                gap: 10px;
-                margin-top: 20px;
+                gap: 5px; /* Reduced spacing between dropdowns */
+                margin-top: 5px; /* Reduced top margin */
+                margin-bottom: 10px; /* Adjust spacing below */
             }
             .time-picker-label {
                 font-family: Arial, sans-serif;
                 font-size: 16px;
                 font-weight: bold;
+                margin-right: 10px; /* Adjust spacing between label and inputs */
             }
             .time-picker-select {
                 font-family: Arial, sans-serif;
-                font-size: 16px;
-                padding: 5px;
-                border: 2px solid #4CAF50;
-                border-radius: 5px;
-                width: 70px;
+                font-size: 14px; /* Slightly smaller font size */
+                padding: 3px; /* Adjust padding for a compact look */
+                border: 1px solid #4CAF50;
+                border-radius: 4px; /* Subtle rounded edges */
+                width: 50px; /* Smaller width for dropdowns */
                 text-align: center;
             }
             .time-picker-select:focus {
@@ -217,7 +219,7 @@ def display_form():
     st.markdown(
         """
         <div class="time-picker-wrapper">
-            <span class="time-picker-label">Select Observation Start Time (24-hour format):</span>
+            <span class="time-picker-label">Observation Start Time (24-hour format):</span>
             <select id="hour" class="time-picker-select" onchange="updateTime()">
                 """ + 
                 "".join([f'<option value="{i:02d}">{i:02d}</option>' for i in range(24)]) +
