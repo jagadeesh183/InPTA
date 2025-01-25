@@ -178,7 +178,13 @@ def display_form():
             file.write(srclist_data)
 
     observation_date = st.date_input("Observation Date in IST (YYYY/DD/MM)")
-    observation_start_time = st.text_input("Observation Start Time in IST (HH:MM:SS)", placeholder="HH:MM:SS")
+    ##
+    hour = st.selectbox("Hour (24-Hour Format)", options=list(range(24)), format_func=lambda x: f"{x:02d}")
+    minute = st.selectbox("Minute", options=list(range(60)), format_func=lambda x: f"{x:02d}")
+    second = st.selectbox("Second", options=list(range(60)), format_func=lambda x: f"{x:02d}")
+    
+    observation_start_time = f"{hour:02d}:{minute:02d}:{second:02d}"
+    #observation_start_time = st.text_input("Observation Start Time in IST (HH:MM:SS)", placeholder="HH:MM:SS")
     start_time_ist = f"{observation_date} {observation_start_time}"
     observation_duration = st.number_input("Observation Duration (in hours)", min_value=0.0, step=0.1)
     threshold_angle = st.number_input("Threshold Separation Angle (degrees)", min_value=0.0, step=0.1)
