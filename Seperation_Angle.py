@@ -179,11 +179,10 @@ def display_form():
 
     observation_date = st.date_input("Observation Date in IST (YYYY/DD/MM)")
     ##
-    hour = st.selectbox("Hour (24-Hour Format)", options=list(range(24)), format_func=lambda x: f"{x:02d}")
-    minute = st.selectbox("Minute", options=list(range(60)), format_func=lambda x: f"{x:02d}")
-    second = st.selectbox("Second", options=list(range(60)), format_func=lambda x: f"{x:02d}")
+    observation_start_time = st.time_input("Observation Start Time in IST", value=time(0, 0, 0))
     
-    observation_start_time = f"{hour:02d}:{minute:02d}:{second:02d}"
+    # Format time input as HH:MM:SS
+    observation_start_time = observation_start_time.strftime("%H:%M:%S")
     #observation_start_time = st.text_input("Observation Start Time in IST (HH:MM:SS)", placeholder="HH:MM:SS")
     start_time_ist = f"{observation_date} {observation_start_time}"
     observation_duration = st.number_input("Observation Duration (in hours)", min_value=0.0, step=0.1)
