@@ -130,6 +130,9 @@ def display_form():
     st.markdown(custom_css, unsafe_allow_html=True)
     
     # Render the header with minimal spacing
+    uploaded_file = st.file_uploader(
+        "Upload a source list file (.txt)", type=["txt"], key="file_uploader"
+    )
     st.markdown(
         """
         <div class="source-header">
@@ -142,9 +145,7 @@ def display_form():
         unsafe_allow_html=True,
     )
 
-    uploaded_file = st.file_uploader(
-        "Upload a source list file (.txt)", type=["txt"], key="file_uploader"
-    )
+    
     srclist_data = ""
     if uploaded_file:
         srclist_data = uploaded_file.read().decode("utf-8")
