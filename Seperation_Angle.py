@@ -187,7 +187,7 @@ def display_form():
                 flex-direction: row;
                 align-items: center;
                 gap: 3px; /* Minimal spacing between dropdowns */
-                margin-top: -20px; /* Removes extra top margin */
+                margin-top: -15px; /* Removes extra top margin */
                 margin-bottom: 20px; /* Minimal spacing below */
             }
             .time-picker-label {
