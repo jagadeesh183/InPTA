@@ -174,14 +174,16 @@ def display_form():
     srclist_data = ""
     if uploaded_file:
         srclist_data = uploaded_file.read().decode("utf-8")
-        st.text_area(
-            label="",
-            value=srclist_data,
-            height=200,
-            key="source_list_preview",
-        )
+        #st.text_area(
+        #    label="",
+        #    value=srclist_data,
+        #    height=200,
+        #    key="source_list_preview",
+        #)
+        #uploaded_file = None
     srclist_data = st.text_area(
             label="",
+            value=srclist_data,
             placeholder="Paste the contents of the source list here...",
             height=200,
             key="source_list",
