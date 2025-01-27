@@ -18,7 +18,7 @@ st.set_page_config(
 development_mode_css = """
     <style>
     .development-banner {
-        position: middle;
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
@@ -35,7 +35,7 @@ development_mode_css = """
     }
     </style>
 """
-is_under_development = True  # Toggle this to False to remove the banner
+is_under_development = False  # Toggle this to False to remove the banner
 
 if is_under_development:
     st.markdown(development_mode_css, unsafe_allow_html=True)
