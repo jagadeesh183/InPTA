@@ -18,7 +18,7 @@ st.set_page_config(
 development_mode_css = """
     <style>
     .development-banner {
-        position: bottom;
+        position: middle;
         top: 0;
         left: 0;
         width: 100%;
