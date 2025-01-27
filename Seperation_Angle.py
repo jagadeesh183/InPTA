@@ -64,7 +64,6 @@ hide_st_style = """
         margin: 0;
         padding: 0;
     }
-    .css-1u3zpt6 {visibility: hidden;} /* Hides user settings menu */
     .viewerBadge_container__1QSob {display: none !important;} /* Hides "Hosted with Streamlit" badge */
     footer {visibility: hidden !important;} /* Hides "Created by <username>" text */
     </style>
