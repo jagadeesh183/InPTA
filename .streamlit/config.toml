@@ -5,10 +5,10 @@ base = "light"
 headless = true
 
 [browser]
-gatherUsageStats = false
+gatherUsageStats = true
 
 [global]
-disableWatchdogWarning = false
+disableWatchdogWarning = true
 
 [ui]
-hideStreamlitMark = false
+hideStreamlitMark = true
