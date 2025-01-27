@@ -1,11 +1,11 @@
 [theme]
-base = "dark"
+base = "light"
 
 [server]
 headless = true
 
 [browser]
-gatherUsageStats = true
+gatherUsageStats = false
 
 [global]
 disableWatchdogWarning = false
