@@ -114,7 +114,7 @@ def display_header():
         **Notes:**
         - A typical threshold for solar proximity is around 9 degrees for InPTA regular observations.
         - To use this tool, either upload the source list file or paste the source list from your observation command file. The required columns are Source Name, RA, DEC, Epoch. If other columns are missing, the tool can still function.  
-          An example line: <pre>J0613-0200    06h13m43.90s    -02d00'47.20"    2000.0</pre>
+          An example line: J0613-0200&nbsp;&nbsp;&nbsp;&nbsp;06h13m43.90s    -02d00'47.20"    2000.0
         - Currently, this tool supports only sources observed from the uGMRT.
         """,
         unsafe_allow_html=True,
