@@ -13,47 +13,6 @@ st.set_page_config(
     page_icon=f"data:image/jpeg;base64,{base64_icon}",
     layout="wide"
 )
-theme = st.radio(
-    "Choose Theme", 
-    options=["Light Mode", "Dark Mode"], 
-    horizontal=True
-)
-
-# Add a custom CSS for dark/light mode
-if theme == "Dark Mode":
-    st.markdown(
-        """
-        <style>
-        body {
-            background-color: #111;
-            color: #EEE;
-        }
-        .stApp {
-            background-color: #111;
-            color: #EEE;
-        }
-        </style>
-        """, 
-        unsafe_allow_html=True
-    )
-else:
-    st.markdown(
-        """
-        <style>
-        body {
-            background-color: #FFF;
-            color: #000;
-        }
-        .stApp {
-            background-color: #FFF;
-            color: #000;
-        }
-        </style>
-        """, 
-        unsafe_allow_html=True
-    )
-
-st.write("This is an example of enabling only a dark/light mode toggle.")
 
 ###banner for devs#####################################################################################################
 development_mode_css = """
