@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/*.py": {
+    "Seperation_Angle.py": {
       "runtime": "python3.9"
     }
   }
