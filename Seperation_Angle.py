@@ -10,7 +10,7 @@ with open("download.jpeg", "rb") as image_file:
 
 st.set_page_config(
     page_title="Solar proximity prediction over the uGMRT antennas",
-    page_icon=f"download.jpeg;base64,{base64_icon}",
+    page_icon=f"data:image/jpeg;base64,{base64_icon}",
     layout="wide"
 )
 
